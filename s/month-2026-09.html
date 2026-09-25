@@ -147,7 +147,7 @@ function pmImgError(img){
     <p>4个月 · 缅因 · 3.9 kg</p>
   </div>
 </div>
-<div class="stats"><div class="stat"><div class="n">8</div><div class="l">观察</div></div><div class="stat"><div class="n">6</div><div class="l">玩耍</div></div><div class="stat"><div class="n">2</div><div class="l">驱虫</div></div></div>
+<div class="stats"><div class="stat"><div class="n">8</div><div class="l">观察</div></div><div class="stat"><div class="n">6</div><div class="l">玩耍</div></div><div class="stat"><div class="n">2</div><div class="l">剪指甲</div></div></div>
 <div class="day">今天 · Sep 25 · Fri</div><div class="entry">
   <div class="rail">
     <div class="time">14:24</div>
@@ -762,6 +762,29 @@ function pmImgError(img){
 <script>
 document.querySelectorAll('.card').forEach(function(card){
   card.addEventListener('click', function(){ card.classList.toggle('open'); });
+});
+
+// The full-size photo of a collapsed card is loaded on demand, so tapping
+// used to wait for the download. Once the page itself has finished, pull
+// those photos in one at a time in the background: the first paint stays
+// light, but by the time a card is opened the photo is already cached.
+window.addEventListener('load', function(){
+  var conn = navigator.connection || {};
+  if(conn.saveData || /2g|3g/.test(conn.effectiveType || '')){ return; }
+  var imgs = document.querySelectorAll('img.dimg');
+  var urls = [];
+  for(var i = 0; i < imgs.length; i++){
+    var u = imgs[i].getAttribute('src');
+    if(u && urls.indexOf(u) < 0){ urls.push(u); }
+  }
+  var at = 0;
+  function warmNext(){
+    if(at >= urls.length){ return; }
+    var warm = new Image();
+    warm.onload = warm.onerror = function(){ setTimeout(warmNext, 120); };
+    warm.src = urls[at++];
+  }
+  setTimeout(warmNext, 600);
 });
 
 // Month switcher: built from s/months.json so newly published months show
