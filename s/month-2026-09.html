@@ -46,6 +46,8 @@ h2.pet{font-size:24px;color:var(--primary);margin:34px 0 14px}
 .row{display:flex;gap:12px;align-items:flex-start}
 .thumb{width:64px;height:64px;border-radius:12px;object-fit:cover;flex:0 0 auto;background:var(--surface)}
 .thumb.ph{display:flex;align-items:center;justify-content:center;font-size:24px}
+.dimg.ph{display:flex;align-items:center;justify-content:center;height:120px;font-size:34px;
+  border-radius:14px;background:var(--surface);margin-bottom:12px}
 .body{flex:1;min-width:0}
 .chip{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;
   padding:3px 10px;border-radius:999px}
@@ -80,6 +82,9 @@ h2.pet{font-size:24px;color:var(--primary);margin:34px 0 14px}
   padding:8px 18px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit}
 .csend:disabled{opacity:.5}
 .cmsg{font-size:12px;color:var(--muted)}
+.cwho{font-size:12px;color:var(--muted)}
+.cwho b{color:var(--primary)}
+.cchange{color:var(--primary);text-decoration:none;font-weight:600}
 footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
   font-size:12px;color:var(--muted);text-align:center}
 .empty{color:var(--muted)}
@@ -94,16 +99,16 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
       <p>月度总结 · September 2026</p>
     </div>
   </header>
-  <nav class="months"><a class="mchip current" href="/pet-moments/s/month-2026-09.html">2026年9月</a></nav>
+  <nav class="months" id="pmMonths" data-current="2026-09" data-base="/pet-moments/"></nav>
   <h2 class="pet">辣条 的Sep</h2>
 <div class="petcard">
-  <img src="img/c8c4f70e878d3c6a62b223fb.jpg" alt="辣条">
+  <img src="img/0bddeceeb9f3c287f25f6f72.jpg" data-src="img/0bddeceeb9f3c287f25f6f72.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/0bddeceeb9f3c287f25f6f72.jpg" data-emoji="🐱" alt="辣条" onerror="pmImgError(this)">
   <div>
     <h3>辣条</h3>
     <p>4个月 · 缅因 · 3.9 kg</p>
   </div>
 </div>
-<div class="stats"><div class="stat"><div class="n">7</div><div class="l">观察</div></div><div class="stat"><div class="n">6</div><div class="l">玩耍</div></div><div class="stat"><div class="n">2</div><div class="l">剪指甲</div></div></div>
+<div class="stats"><div class="stat"><div class="n">7</div><div class="l">观察</div></div><div class="stat"><div class="n">6</div><div class="l">玩耍</div></div><div class="stat"><div class="n">2</div><div class="l">驱虫</div></div></div>
 <div class="day">今天 · Sep 25 · Fri</div><div class="entry">
   <div class="rail">
     <div class="time">14:24</div>
@@ -111,7 +116,7 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
   </div>
   <div class="card">
     <div class="row">
-      <img class="thumb" src="img/05696fc7d376083eadcedbae.jpg" alt="" loading="lazy">
+      <img class="thumb" src="img/9d519c8668ce02492c938750.jpg" data-src="img/9d519c8668ce02492c938750.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/9d519c8668ce02492c938750.jpg" data-emoji="🐾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
       <div class="body">
         <span class="chip" style="color:#73B8BC;background:#73B8BC22">观察</span>
         <p class="note">最近几天它都很想在角落里睡觉，不知道为啥</p>
@@ -119,16 +124,17 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
     </div>
     <p class="toggle"><span class="more">点击展开 ▾</span><span class="less">收起 ▴</span></p>
     <div class="detail">
-      <img src="img/05696fc7d376083eadcedbae.jpg" alt="" loading="lazy">
+      <img class="dimg" src="img/9d519c8668ce02492c938750.jpg" data-src="img/9d519c8668ce02492c938750.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/9d519c8668ce02492c938750.jpg" data-emoji="🐾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
       <p class="full">最近几天它都很想在角落里睡觉，不知道为啥</p>
       <p>Sep 25, 2026 at 14:24</p>
     </div>
-    <div class="cbox" data-moment="8764ec4e0e364955">
-  <button class="cbtn" type="button">💬 <span class="ccount" data-count="8764ec4e0e364955">评论</span></button>
+    <div class="cbox" data-moment="0bb593d56d9cfbfe">
+  <button class="cbtn" type="button">💬 <span class="ccount" data-count="0bb593d56d9cfbfe">评论</span></button>
   <div class="cthread" hidden>
     <div class="clist"></div>
     <div class="cform">
-      <input class="cnick" type="text" maxlength="20" placeholder="你的昵称">
+      <div class="cwho" hidden>以 <b class="cwhoname"></b> 评论 · <a class="cchange" href="javascript:void(0)">改昵称</a></div>
+      <input class="cnick" type="text" maxlength="20" placeholder="你的昵称（填一次就记住了）">
       <textarea class="cbody" maxlength="300" rows="2" placeholder="说点什么…"></textarea>
       <button class="csend" type="button">发送</button>
     </div>
@@ -142,7 +148,7 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
   </div>
   <div class="card">
     <div class="row">
-      <img class="thumb" src="img/b0abb580f60f1cb8f9a7df09.jpg" alt="" loading="lazy">
+      <img class="thumb" src="img/d24d830cc62846ba8ecc5719.jpg" data-src="img/d24d830cc62846ba8ecc5719.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/d24d830cc62846ba8ecc5719.jpg" data-emoji="🐾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
       <div class="body">
         <span class="chip" style="color:#73B8BC;background:#73B8BC22">观察</span>
         <p class="note">安静晒太阳🌞</p>
@@ -150,16 +156,17 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
     </div>
     <p class="toggle"><span class="more">点击展开 ▾</span><span class="less">收起 ▴</span></p>
     <div class="detail">
-      <img src="img/b0abb580f60f1cb8f9a7df09.jpg" alt="" loading="lazy">
+      <img class="dimg" src="img/d24d830cc62846ba8ecc5719.jpg" data-src="img/d24d830cc62846ba8ecc5719.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/d24d830cc62846ba8ecc5719.jpg" data-emoji="🐾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
       <p class="full">安静晒太阳🌞</p>
       <p>Sep 25, 2026 at 13:00</p>
     </div>
-    <div class="cbox" data-moment="351e326ffb074e3d">
-  <button class="cbtn" type="button">💬 <span class="ccount" data-count="351e326ffb074e3d">评论</span></button>
+    <div class="cbox" data-moment="9e2272b2422422dc">
+  <button class="cbtn" type="button">💬 <span class="ccount" data-count="9e2272b2422422dc">评论</span></button>
   <div class="cthread" hidden>
     <div class="clist"></div>
     <div class="cform">
-      <input class="cnick" type="text" maxlength="20" placeholder="你的昵称">
+      <div class="cwho" hidden>以 <b class="cwhoname"></b> 评论 · <a class="cchange" href="javascript:void(0)">改昵称</a></div>
+      <input class="cnick" type="text" maxlength="20" placeholder="你的昵称（填一次就记住了）">
       <textarea class="cbody" maxlength="300" rows="2" placeholder="说点什么…"></textarea>
       <button class="csend" type="button">发送</button>
     </div>
@@ -173,7 +180,7 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
   </div>
   <div class="card">
     <div class="row">
-      <img class="thumb" src="img/8a383e22b4c9b5b6a95921f4.jpg" alt="" loading="lazy">
+      <img class="thumb" src="img/2973f2debcddf909f94a92c3.jpg" data-src="img/2973f2debcddf909f94a92c3.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/2973f2debcddf909f94a92c3.jpg" data-emoji="🐾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
       <div class="body">
         <span class="chip" style="color:#73B8BC;background:#73B8BC22">观察</span>
         <p class="note">昨天第一次出门啦，还跟小流浪猫搭讪，结果被哈气了</p>
@@ -181,7 +188,7 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
     </div>
     <p class="toggle"><span class="more">点击展开 ▾</span><span class="less">收起 ▴</span></p>
     <div class="detail">
-      <img src="img/8a383e22b4c9b5b6a95921f4.jpg" alt="" loading="lazy">
+      <img class="dimg" src="img/2973f2debcddf909f94a92c3.jpg" data-src="img/2973f2debcddf909f94a92c3.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/2973f2debcddf909f94a92c3.jpg" data-emoji="🐾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
       <p class="full">昨天第一次出门啦，还跟小流浪猫搭讪，结果被哈气了</p>
       <p>Sep 24, 2026 at 21:55</p>
     </div>
@@ -190,7 +197,8 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
   <div class="cthread" hidden>
     <div class="clist"></div>
     <div class="cform">
-      <input class="cnick" type="text" maxlength="20" placeholder="你的昵称">
+      <div class="cwho" hidden>以 <b class="cwhoname"></b> 评论 · <a class="cchange" href="javascript:void(0)">改昵称</a></div>
+      <input class="cnick" type="text" maxlength="20" placeholder="你的昵称（填一次就记住了）">
       <textarea class="cbody" maxlength="300" rows="2" placeholder="说点什么…"></textarea>
       <button class="csend" type="button">发送</button>
     </div>
@@ -216,12 +224,13 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
       <p class="full">剪指甲啦，感觉脚指甲长的很慢</p>
       <p>Sep 24, 2026 at 8:53</p>
     </div>
-    <div class="cbox" data-moment="744fe0a8b33f6ef9">
-  <button class="cbtn" type="button">💬 <span class="ccount" data-count="744fe0a8b33f6ef9">评论</span></button>
+    <div class="cbox" data-moment="ec4d6c9506484df1">
+  <button class="cbtn" type="button">💬 <span class="ccount" data-count="ec4d6c9506484df1">评论</span></button>
   <div class="cthread" hidden>
     <div class="clist"></div>
     <div class="cform">
-      <input class="cnick" type="text" maxlength="20" placeholder="你的昵称">
+      <div class="cwho" hidden>以 <b class="cwhoname"></b> 评论 · <a class="cchange" href="javascript:void(0)">改昵称</a></div>
+      <input class="cnick" type="text" maxlength="20" placeholder="你的昵称（填一次就记住了）">
       <textarea class="cbody" maxlength="300" rows="2" placeholder="说点什么…"></textarea>
       <button class="csend" type="button">发送</button>
     </div>
@@ -247,12 +256,13 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
       <p class="full">第一次剃，也不管美不美观啦</p>
       <p>Sep 20, 2026 at 10:10</p>
     </div>
-    <div class="cbox" data-moment="0da71732b0f88a54">
-  <button class="cbtn" type="button">💬 <span class="ccount" data-count="0da71732b0f88a54">评论</span></button>
+    <div class="cbox" data-moment="462f1f8c7ea52bb7">
+  <button class="cbtn" type="button">💬 <span class="ccount" data-count="462f1f8c7ea52bb7">评论</span></button>
   <div class="cthread" hidden>
     <div class="clist"></div>
     <div class="cform">
-      <input class="cnick" type="text" maxlength="20" placeholder="你的昵称">
+      <div class="cwho" hidden>以 <b class="cwhoname"></b> 评论 · <a class="cchange" href="javascript:void(0)">改昵称</a></div>
+      <input class="cnick" type="text" maxlength="20" placeholder="你的昵称（填一次就记住了）">
       <textarea class="cbody" maxlength="300" rows="2" placeholder="说点什么…"></textarea>
       <button class="csend" type="button">发送</button>
     </div>
@@ -266,7 +276,7 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
   </div>
   <div class="card">
     <div class="row">
-      <img class="thumb" src="img/31d54e9fe686dc6b8c59e788.jpg" alt="" loading="lazy">
+      <img class="thumb" src="img/f22b4d3297a61a5ec2d08e71.jpg" data-src="img/f22b4d3297a61a5ec2d08e71.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/f22b4d3297a61a5ec2d08e71.jpg" data-emoji="🐾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
       <div class="body">
         <span class="chip" style="color:#73B8BC;background:#73B8BC22">观察</span>
         <p class="note">最近它很喜欢望向窗外，感觉要越狱了</p>
@@ -274,16 +284,17 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
     </div>
     <p class="toggle"><span class="more">点击展开 ▾</span><span class="less">收起 ▴</span></p>
     <div class="detail">
-      <img src="img/31d54e9fe686dc6b8c59e788.jpg" alt="" loading="lazy">
+      <img class="dimg" src="img/f22b4d3297a61a5ec2d08e71.jpg" data-src="img/f22b4d3297a61a5ec2d08e71.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/f22b4d3297a61a5ec2d08e71.jpg" data-emoji="🐾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
       <p class="full">最近它很喜欢望向窗外，感觉要越狱了</p>
       <p>Sep 19, 2026 at 11:15</p>
     </div>
-    <div class="cbox" data-moment="ad55afbaea588419">
-  <button class="cbtn" type="button">💬 <span class="ccount" data-count="ad55afbaea588419">评论</span></button>
+    <div class="cbox" data-moment="69220b5b5538b1ab">
+  <button class="cbtn" type="button">💬 <span class="ccount" data-count="69220b5b5538b1ab">评论</span></button>
   <div class="cthread" hidden>
     <div class="clist"></div>
     <div class="cform">
-      <input class="cnick" type="text" maxlength="20" placeholder="你的昵称">
+      <div class="cwho" hidden>以 <b class="cwhoname"></b> 评论 · <a class="cchange" href="javascript:void(0)">改昵称</a></div>
+      <input class="cnick" type="text" maxlength="20" placeholder="你的昵称（填一次就记住了）">
       <textarea class="cbody" maxlength="300" rows="2" placeholder="说点什么…"></textarea>
       <button class="csend" type="button">发送</button>
     </div>
@@ -297,7 +308,7 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
   </div>
   <div class="card">
     <div class="row">
-      <img class="thumb" src="img/fbc179035b988e760d043b46.jpg" alt="" loading="lazy">
+      <img class="thumb" src="img/a71190b1699dd63a0d6bdc7a.jpg" data-src="img/a71190b1699dd63a0d6bdc7a.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/a71190b1699dd63a0d6bdc7a.jpg" data-emoji="💅" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
       <div class="body">
         <span class="chip" style="color:#E8A598;background:#E8A59822">剪指甲</span>
         <p class="note">安静剪完指甲，奖励一个小零食，但是还想吃</p>
@@ -305,16 +316,17 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
     </div>
     <p class="toggle"><span class="more">点击展开 ▾</span><span class="less">收起 ▴</span></p>
     <div class="detail">
-      <img src="img/fbc179035b988e760d043b46.jpg" alt="" loading="lazy">
+      <img class="dimg" src="img/a71190b1699dd63a0d6bdc7a.jpg" data-src="img/a71190b1699dd63a0d6bdc7a.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/a71190b1699dd63a0d6bdc7a.jpg" data-emoji="💅" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
       <p class="full">安静剪完指甲，奖励一个小零食，但是还想吃</p>
       <p>Sep 13, 2026 at 10:01</p>
     </div>
-    <div class="cbox" data-moment="314c86dd2c50708e">
-  <button class="cbtn" type="button">💬 <span class="ccount" data-count="314c86dd2c50708e">评论</span></button>
+    <div class="cbox" data-moment="5aeb899eae801005">
+  <button class="cbtn" type="button">💬 <span class="ccount" data-count="5aeb899eae801005">评论</span></button>
   <div class="cthread" hidden>
     <div class="clist"></div>
     <div class="cform">
-      <input class="cnick" type="text" maxlength="20" placeholder="你的昵称">
+      <div class="cwho" hidden>以 <b class="cwhoname"></b> 评论 · <a class="cchange" href="javascript:void(0)">改昵称</a></div>
+      <input class="cnick" type="text" maxlength="20" placeholder="你的昵称（填一次就记住了）">
       <textarea class="cbody" maxlength="300" rows="2" placeholder="说点什么…"></textarea>
       <button class="csend" type="button">发送</button>
     </div>
@@ -328,7 +340,7 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
   </div>
   <div class="card">
     <div class="row">
-      <img class="thumb" src="img/ffb17a1894a659c03bc0e66b.jpg" alt="" loading="lazy">
+      <img class="thumb" src="img/542467c2d0211a149be248ad.jpg" data-src="img/542467c2d0211a149be248ad.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/542467c2d0211a149be248ad.jpg" data-emoji="🎾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
       <div class="body">
         <span class="chip" style="color:#7FB6D8;background:#7FB6D822">玩耍</span>
         <p class="note">自己晒太阳，自己舔毛</p>
@@ -336,16 +348,17 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
     </div>
     <p class="toggle"><span class="more">点击展开 ▾</span><span class="less">收起 ▴</span></p>
     <div class="detail">
-      <img src="img/ffb17a1894a659c03bc0e66b.jpg" alt="" loading="lazy">
+      <img class="dimg" src="img/542467c2d0211a149be248ad.jpg" data-src="img/542467c2d0211a149be248ad.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/542467c2d0211a149be248ad.jpg" data-emoji="🎾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
       <p class="full">自己晒太阳，自己舔毛</p>
       <p>Sep 10, 2026 at 10:23</p>
     </div>
-    <div class="cbox" data-moment="9e72b0cd423a91e0">
-  <button class="cbtn" type="button">💬 <span class="ccount" data-count="9e72b0cd423a91e0">评论</span></button>
+    <div class="cbox" data-moment="b5823dbfb931a0f5">
+  <button class="cbtn" type="button">💬 <span class="ccount" data-count="b5823dbfb931a0f5">评论</span></button>
   <div class="cthread" hidden>
     <div class="clist"></div>
     <div class="cform">
-      <input class="cnick" type="text" maxlength="20" placeholder="你的昵称">
+      <div class="cwho" hidden>以 <b class="cwhoname"></b> 评论 · <a class="cchange" href="javascript:void(0)">改昵称</a></div>
+      <input class="cnick" type="text" maxlength="20" placeholder="你的昵称（填一次就记住了）">
       <textarea class="cbody" maxlength="300" rows="2" placeholder="说点什么…"></textarea>
       <button class="csend" type="button">发送</button>
     </div>
@@ -359,7 +372,7 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
   </div>
   <div class="card">
     <div class="row">
-      <img class="thumb" src="img/18261b88113e21376f60463c.jpg" alt="" loading="lazy">
+      <img class="thumb" src="img/425b9c1ed02963bac50a4bb6.jpg" data-src="img/425b9c1ed02963bac50a4bb6.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/425b9c1ed02963bac50a4bb6.jpg" data-emoji="💊" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
       <div class="body">
         <span class="chip" style="color:#9BB48C;background:#9BB48C22">驱虫</span>
         <p class="note">今天外驱</p>
@@ -367,16 +380,17 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
     </div>
     <p class="toggle"><span class="more">点击展开 ▾</span><span class="less">收起 ▴</span></p>
     <div class="detail">
-      <img src="img/18261b88113e21376f60463c.jpg" alt="" loading="lazy">
+      <img class="dimg" src="img/425b9c1ed02963bac50a4bb6.jpg" data-src="img/425b9c1ed02963bac50a4bb6.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/425b9c1ed02963bac50a4bb6.jpg" data-emoji="💊" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
       <p class="full">今天外驱</p>
       <p>Sep 9, 2026 at 22:48</p>
     </div>
-    <div class="cbox" data-moment="d3e3249af213a8fe">
-  <button class="cbtn" type="button">💬 <span class="ccount" data-count="d3e3249af213a8fe">评论</span></button>
+    <div class="cbox" data-moment="e24969a2c034028c">
+  <button class="cbtn" type="button">💬 <span class="ccount" data-count="e24969a2c034028c">评论</span></button>
   <div class="cthread" hidden>
     <div class="clist"></div>
     <div class="cform">
-      <input class="cnick" type="text" maxlength="20" placeholder="你的昵称">
+      <div class="cwho" hidden>以 <b class="cwhoname"></b> 评论 · <a class="cchange" href="javascript:void(0)">改昵称</a></div>
+      <input class="cnick" type="text" maxlength="20" placeholder="你的昵称（填一次就记住了）">
       <textarea class="cbody" maxlength="300" rows="2" placeholder="说点什么…"></textarea>
       <button class="csend" type="button">发送</button>
     </div>
@@ -390,7 +404,7 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
   </div>
   <div class="card">
     <div class="row">
-      <img class="thumb" src="img/3daacff81ecb0a1f2003a72d.jpg" alt="" loading="lazy">
+      <img class="thumb" src="img/2fef573547484a80c088552b.jpg" data-src="img/2fef573547484a80c088552b.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/2fef573547484a80c088552b.jpg" data-emoji="🐾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
       <div class="body">
         <span class="chip" style="color:#73B8BC;background:#73B8BC22">观察</span>
         <p class="note">无备注</p>
@@ -398,16 +412,17 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
     </div>
     <p class="toggle"><span class="more">点击展开 ▾</span><span class="less">收起 ▴</span></p>
     <div class="detail">
-      <img src="img/3daacff81ecb0a1f2003a72d.jpg" alt="" loading="lazy">
+      <img class="dimg" src="img/2fef573547484a80c088552b.jpg" data-src="img/2fef573547484a80c088552b.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/2fef573547484a80c088552b.jpg" data-emoji="🐾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
       <p class="full">无备注</p>
       <p>Sep 9, 2026 at 7:47</p>
     </div>
-    <div class="cbox" data-moment="eb9eb0d451fc44f8">
-  <button class="cbtn" type="button">💬 <span class="ccount" data-count="eb9eb0d451fc44f8">评论</span></button>
+    <div class="cbox" data-moment="eaffbe9ae0ccf0ba">
+  <button class="cbtn" type="button">💬 <span class="ccount" data-count="eaffbe9ae0ccf0ba">评论</span></button>
   <div class="cthread" hidden>
     <div class="clist"></div>
     <div class="cform">
-      <input class="cnick" type="text" maxlength="20" placeholder="你的昵称">
+      <div class="cwho" hidden>以 <b class="cwhoname"></b> 评论 · <a class="cchange" href="javascript:void(0)">改昵称</a></div>
+      <input class="cnick" type="text" maxlength="20" placeholder="你的昵称（填一次就记住了）">
       <textarea class="cbody" maxlength="300" rows="2" placeholder="说点什么…"></textarea>
       <button class="csend" type="button">发送</button>
     </div>
@@ -421,7 +436,7 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
   </div>
   <div class="card">
     <div class="row">
-      <img class="thumb" src="img/95bc5c9448b9be40fd4bc69e.jpg" alt="" loading="lazy">
+      <img class="thumb" src="img/211dcf16e23bdb30915e8ec4.jpg" data-src="img/211dcf16e23bdb30915e8ec4.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/211dcf16e23bdb30915e8ec4.jpg" data-emoji="🎾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
       <div class="body">
         <span class="chip" style="color:#7FB6D8;background:#7FB6D822">玩耍</span>
         <p class="note">由于它上窗台发现了之前它玩烂的羽毛逗猫棒，现在开始自娱自乐，已经玩了20分钟了</p>
@@ -429,16 +444,17 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
     </div>
     <p class="toggle"><span class="more">点击展开 ▾</span><span class="less">收起 ▴</span></p>
     <div class="detail">
-      <img src="img/95bc5c9448b9be40fd4bc69e.jpg" alt="" loading="lazy">
+      <img class="dimg" src="img/211dcf16e23bdb30915e8ec4.jpg" data-src="img/211dcf16e23bdb30915e8ec4.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/211dcf16e23bdb30915e8ec4.jpg" data-emoji="🎾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
       <p class="full">由于它上窗台发现了之前它玩烂的羽毛逗猫棒，现在开始自娱自乐，已经玩了20分钟了</p>
       <p>Sep 8, 2026 at 22:06</p>
     </div>
-    <div class="cbox" data-moment="91aab16e565b366f">
-  <button class="cbtn" type="button">💬 <span class="ccount" data-count="91aab16e565b366f">评论</span></button>
+    <div class="cbox" data-moment="b47e92df3a670325">
+  <button class="cbtn" type="button">💬 <span class="ccount" data-count="b47e92df3a670325">评论</span></button>
   <div class="cthread" hidden>
     <div class="clist"></div>
     <div class="cform">
-      <input class="cnick" type="text" maxlength="20" placeholder="你的昵称">
+      <div class="cwho" hidden>以 <b class="cwhoname"></b> 评论 · <a class="cchange" href="javascript:void(0)">改昵称</a></div>
+      <input class="cnick" type="text" maxlength="20" placeholder="你的昵称（填一次就记住了）">
       <textarea class="cbody" maxlength="300" rows="2" placeholder="说点什么…"></textarea>
       <button class="csend" type="button">发送</button>
     </div>
@@ -452,7 +468,7 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
   </div>
   <div class="card">
     <div class="row">
-      <img class="thumb" src="img/d43a915af8110639929259f0.jpg" alt="" loading="lazy">
+      <img class="thumb" src="img/c3a1f8ed469c10f4f893cff5.jpg" data-src="img/c3a1f8ed469c10f4f893cff5.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/c3a1f8ed469c10f4f893cff5.jpg" data-emoji="🎾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
       <div class="body">
         <span class="chip" style="color:#7FB6D8;background:#7FB6D822">玩耍</span>
         <p class="note">引诱它晒太阳</p>
@@ -460,16 +476,17 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
     </div>
     <p class="toggle"><span class="more">点击展开 ▾</span><span class="less">收起 ▴</span></p>
     <div class="detail">
-      <img src="img/d43a915af8110639929259f0.jpg" alt="" loading="lazy">
+      <img class="dimg" src="img/c3a1f8ed469c10f4f893cff5.jpg" data-src="img/c3a1f8ed469c10f4f893cff5.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/c3a1f8ed469c10f4f893cff5.jpg" data-emoji="🎾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
       <p class="full">引诱它晒太阳</p>
       <p>Sep 8, 2026 at 11:23</p>
     </div>
-    <div class="cbox" data-moment="3c2fad051c59fb07">
-  <button class="cbtn" type="button">💬 <span class="ccount" data-count="3c2fad051c59fb07">评论</span></button>
+    <div class="cbox" data-moment="684f01e57cd9330d">
+  <button class="cbtn" type="button">💬 <span class="ccount" data-count="684f01e57cd9330d">评论</span></button>
   <div class="cthread" hidden>
     <div class="clist"></div>
     <div class="cform">
-      <input class="cnick" type="text" maxlength="20" placeholder="你的昵称">
+      <div class="cwho" hidden>以 <b class="cwhoname"></b> 评论 · <a class="cchange" href="javascript:void(0)">改昵称</a></div>
+      <input class="cnick" type="text" maxlength="20" placeholder="你的昵称（填一次就记住了）">
       <textarea class="cbody" maxlength="300" rows="2" placeholder="说点什么…"></textarea>
       <button class="csend" type="button">发送</button>
     </div>
@@ -483,7 +500,7 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
   </div>
   <div class="card">
     <div class="row">
-      <img class="thumb" src="img/d0a57dcbc8a8b64615a139ee.jpg" alt="" loading="lazy">
+      <img class="thumb" src="img/a3f9a2a1ddfb36d3137f504a.jpg" data-src="img/a3f9a2a1ddfb36d3137f504a.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/a3f9a2a1ddfb36d3137f504a.jpg" data-emoji="🐾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
       <div class="body">
         <span class="chip" style="color:#73B8BC;background:#73B8BC22">观察</span>
         <p class="note">自己晒太阳，十分不错，之前要想办法给他晒太阳</p>
@@ -491,16 +508,17 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
     </div>
     <p class="toggle"><span class="more">点击展开 ▾</span><span class="less">收起 ▴</span></p>
     <div class="detail">
-      <img src="img/d0a57dcbc8a8b64615a139ee.jpg" alt="" loading="lazy">
+      <img class="dimg" src="img/a3f9a2a1ddfb36d3137f504a.jpg" data-src="img/a3f9a2a1ddfb36d3137f504a.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/a3f9a2a1ddfb36d3137f504a.jpg" data-emoji="🐾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
       <p class="full">自己晒太阳，十分不错，之前要想办法给他晒太阳</p>
       <p>Sep 8, 2026 at 9:17</p>
     </div>
-    <div class="cbox" data-moment="a2528402e8e1ac4f">
-  <button class="cbtn" type="button">💬 <span class="ccount" data-count="a2528402e8e1ac4f">评论</span></button>
+    <div class="cbox" data-moment="5ff616218a9396f4">
+  <button class="cbtn" type="button">💬 <span class="ccount" data-count="5ff616218a9396f4">评论</span></button>
   <div class="cthread" hidden>
     <div class="clist"></div>
     <div class="cform">
-      <input class="cnick" type="text" maxlength="20" placeholder="你的昵称">
+      <div class="cwho" hidden>以 <b class="cwhoname"></b> 评论 · <a class="cchange" href="javascript:void(0)">改昵称</a></div>
+      <input class="cnick" type="text" maxlength="20" placeholder="你的昵称（填一次就记住了）">
       <textarea class="cbody" maxlength="300" rows="2" placeholder="说点什么…"></textarea>
       <button class="csend" type="button">发送</button>
     </div>
@@ -514,7 +532,7 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
   </div>
   <div class="card">
     <div class="row">
-      <img class="thumb" src="img/2f8746b077fea796d9683ed8.jpg" alt="" loading="lazy">
+      <img class="thumb" src="img/0545d0f107e6e2559abd9071.jpg" data-src="img/0545d0f107e6e2559abd9071.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/0545d0f107e6e2559abd9071.jpg" data-emoji="🎾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
       <div class="body">
         <span class="chip" style="color:#7FB6D8;background:#7FB6D822">玩耍</span>
         <p class="note">新玩具，玩了5分钟已经玩烂了</p>
@@ -522,16 +540,17 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
     </div>
     <p class="toggle"><span class="more">点击展开 ▾</span><span class="less">收起 ▴</span></p>
     <div class="detail">
-      <img src="img/2f8746b077fea796d9683ed8.jpg" alt="" loading="lazy">
+      <img class="dimg" src="img/0545d0f107e6e2559abd9071.jpg" data-src="img/0545d0f107e6e2559abd9071.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/0545d0f107e6e2559abd9071.jpg" data-emoji="🎾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
       <p class="full">新玩具，玩了5分钟已经玩烂了</p>
       <p>Sep 7, 2026 at 19:12</p>
     </div>
-    <div class="cbox" data-moment="fcad66035262cad9">
-  <button class="cbtn" type="button">💬 <span class="ccount" data-count="fcad66035262cad9">评论</span></button>
+    <div class="cbox" data-moment="8c7467ba5b521aff">
+  <button class="cbtn" type="button">💬 <span class="ccount" data-count="8c7467ba5b521aff">评论</span></button>
   <div class="cthread" hidden>
     <div class="clist"></div>
     <div class="cform">
-      <input class="cnick" type="text" maxlength="20" placeholder="你的昵称">
+      <div class="cwho" hidden>以 <b class="cwhoname"></b> 评论 · <a class="cchange" href="javascript:void(0)">改昵称</a></div>
+      <input class="cnick" type="text" maxlength="20" placeholder="你的昵称（填一次就记住了）">
       <textarea class="cbody" maxlength="300" rows="2" placeholder="说点什么…"></textarea>
       <button class="csend" type="button">发送</button>
     </div>
@@ -545,7 +564,7 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
   </div>
   <div class="card">
     <div class="row">
-      <img class="thumb" src="img/94aa463fc4a006d3af461696.jpg" alt="" loading="lazy">
+      <img class="thumb" src="img/36ac60669c10fe6fac37bbe3.jpg" data-src="img/36ac60669c10fe6fac37bbe3.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/36ac60669c10fe6fac37bbe3.jpg" data-emoji="🐾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
       <div class="body">
         <span class="chip" style="color:#73B8BC;background:#73B8BC22">观察</span>
         <p class="note">已经大到可以跳上厨房台面了，以前放的东西都得收起来了</p>
@@ -553,16 +572,17 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
     </div>
     <p class="toggle"><span class="more">点击展开 ▾</span><span class="less">收起 ▴</span></p>
     <div class="detail">
-      <img src="img/94aa463fc4a006d3af461696.jpg" alt="" loading="lazy">
+      <img class="dimg" src="img/36ac60669c10fe6fac37bbe3.jpg" data-src="img/36ac60669c10fe6fac37bbe3.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/36ac60669c10fe6fac37bbe3.jpg" data-emoji="🐾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
       <p class="full">已经大到可以跳上厨房台面了，以前放的东西都得收起来了</p>
       <p>Sep 7, 2026 at 17:23</p>
     </div>
-    <div class="cbox" data-moment="57cc9cf34faa5e2d">
-  <button class="cbtn" type="button">💬 <span class="ccount" data-count="57cc9cf34faa5e2d">评论</span></button>
+    <div class="cbox" data-moment="8f655988966b1bf6">
+  <button class="cbtn" type="button">💬 <span class="ccount" data-count="8f655988966b1bf6">评论</span></button>
   <div class="cthread" hidden>
     <div class="clist"></div>
     <div class="cform">
-      <input class="cnick" type="text" maxlength="20" placeholder="你的昵称">
+      <div class="cwho" hidden>以 <b class="cwhoname"></b> 评论 · <a class="cchange" href="javascript:void(0)">改昵称</a></div>
+      <input class="cnick" type="text" maxlength="20" placeholder="你的昵称（填一次就记住了）">
       <textarea class="cbody" maxlength="300" rows="2" placeholder="说点什么…"></textarea>
       <button class="csend" type="button">发送</button>
     </div>
@@ -588,12 +608,13 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
       <p class="full">第一次内驱</p>
       <p>Sep 6, 2026 at 23:11</p>
     </div>
-    <div class="cbox" data-moment="95e68790b173f0f5">
-  <button class="cbtn" type="button">💬 <span class="ccount" data-count="95e68790b173f0f5">评论</span></button>
+    <div class="cbox" data-moment="766a3e759d0cc640">
+  <button class="cbtn" type="button">💬 <span class="ccount" data-count="766a3e759d0cc640">评论</span></button>
   <div class="cthread" hidden>
     <div class="clist"></div>
     <div class="cform">
-      <input class="cnick" type="text" maxlength="20" placeholder="你的昵称">
+      <div class="cwho" hidden>以 <b class="cwhoname"></b> 评论 · <a class="cchange" href="javascript:void(0)">改昵称</a></div>
+      <input class="cnick" type="text" maxlength="20" placeholder="你的昵称（填一次就记住了）">
       <textarea class="cbody" maxlength="300" rows="2" placeholder="说点什么…"></textarea>
       <button class="csend" type="button">发送</button>
     </div>
@@ -607,7 +628,7 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
   </div>
   <div class="card">
     <div class="row">
-      <img class="thumb" src="img/120d024bfa6d565178ce818c.jpg" alt="" loading="lazy">
+      <img class="thumb" src="img/7ecc8bdb2fd1bd801eee9486.jpg" data-src="img/7ecc8bdb2fd1bd801eee9486.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/7ecc8bdb2fd1bd801eee9486.jpg" data-emoji="🎾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
       <div class="body">
         <span class="chip" style="color:#7FB6D8;background:#7FB6D822">玩耍</span>
         <p class="note">在思考要不要给它剃脚毛，他总打滑怕有关节问题</p>
@@ -615,16 +636,17 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
     </div>
     <p class="toggle"><span class="more">点击展开 ▾</span><span class="less">收起 ▴</span></p>
     <div class="detail">
-      <img src="img/120d024bfa6d565178ce818c.jpg" alt="" loading="lazy">
+      <img class="dimg" src="img/7ecc8bdb2fd1bd801eee9486.jpg" data-src="img/7ecc8bdb2fd1bd801eee9486.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/7ecc8bdb2fd1bd801eee9486.jpg" data-emoji="🎾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
       <p class="full">在思考要不要给它剃脚毛，他总打滑怕有关节问题</p>
       <p>Sep 1, 2026 at 18:56</p>
     </div>
-    <div class="cbox" data-moment="b62dc469e2b20379">
-  <button class="cbtn" type="button">💬 <span class="ccount" data-count="b62dc469e2b20379">评论</span></button>
+    <div class="cbox" data-moment="636fd56457a72497">
+  <button class="cbtn" type="button">💬 <span class="ccount" data-count="636fd56457a72497">评论</span></button>
   <div class="cthread" hidden>
     <div class="clist"></div>
     <div class="cform">
-      <input class="cnick" type="text" maxlength="20" placeholder="你的昵称">
+      <div class="cwho" hidden>以 <b class="cwhoname"></b> 评论 · <a class="cchange" href="javascript:void(0)">改昵称</a></div>
+      <input class="cnick" type="text" maxlength="20" placeholder="你的昵称（填一次就记住了）">
       <textarea class="cbody" maxlength="300" rows="2" placeholder="说点什么…"></textarea>
       <button class="csend" type="button">发送</button>
     </div>
@@ -638,7 +660,7 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
   </div>
   <div class="card">
     <div class="row">
-      <img class="thumb" src="img/3c8ea1f794e7f32632814e23.jpg" alt="" loading="lazy">
+      <img class="thumb" src="img/5bd41d5a8faa13a45a206af9.jpg" data-src="img/5bd41d5a8faa13a45a206af9.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/5bd41d5a8faa13a45a206af9.jpg" data-emoji="🎾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
       <div class="body">
         <span class="chip" style="color:#7FB6D8;background:#7FB6D822">玩耍</span>
         <p class="note">最近发现它很喜欢在猫爬架附近躺着玩逗猫棒</p>
@@ -646,7 +668,7 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
     </div>
     <p class="toggle"><span class="more">点击展开 ▾</span><span class="less">收起 ▴</span></p>
     <div class="detail">
-      <img src="img/3c8ea1f794e7f32632814e23.jpg" alt="" loading="lazy">
+      <img class="dimg" src="img/5bd41d5a8faa13a45a206af9.jpg" data-src="img/5bd41d5a8faa13a45a206af9.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/5bd41d5a8faa13a45a206af9.jpg" data-emoji="🎾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
       <p class="full">最近发现它很喜欢在猫爬架附近躺着玩逗猫棒</p>
       <p>Sep 1, 2026 at 12:45</p>
     </div>
@@ -655,7 +677,8 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
   <div class="cthread" hidden>
     <div class="clist"></div>
     <div class="cform">
-      <input class="cnick" type="text" maxlength="20" placeholder="你的昵称">
+      <div class="cwho" hidden>以 <b class="cwhoname"></b> 评论 · <a class="cchange" href="javascript:void(0)">改昵称</a></div>
+      <input class="cnick" type="text" maxlength="20" placeholder="你的昵称（填一次就记住了）">
       <textarea class="cbody" maxlength="300" rows="2" placeholder="说点什么…"></textarea>
       <button class="csend" type="button">发送</button>
     </div>
@@ -669,6 +692,55 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
 document.querySelectorAll('.card').forEach(function(card){
   card.addEventListener('click', function(){ card.classList.toggle('open'); });
 });
+
+// Month switcher: built from s/months.json so newly published months show
+// up on every page without regenerating the others.
+(function(){
+  var nav = document.getElementById('pmMonths');
+  if(!nav){ return; }
+  var current = nav.getAttribute('data-current');
+  var base = nav.getAttribute('data-base') || '/';
+  fetch(base + 's/months.json', { cache: 'no-store' })
+    .then(function(r){ return r.ok ? r.json() : []; })
+    .then(function(keys){
+      if(!Array.isArray(keys) || !keys.length){ return; }
+      nav.innerHTML = '';
+      keys.forEach(function(key){
+        var parts = String(key).split('-');
+        var a = document.createElement('a');
+        a.className = 'mchip' + (key === current ? ' current' : '');
+        a.textContent = parts.length === 2 ? (parts[0] + '年' + parseInt(parts[1], 10) + '月') : key;
+        a.href = base + 's/month-' + key + '.html';
+        nav.appendChild(a);
+      });
+    })
+    .catch(function(){});
+})();
+
+// Photos: retry a couple of times, then fall back to the CDN, then to a
+// placeholder — github.io can be flaky and fresh uploads need a moment.
+function pmImgError(img){
+  var tries = parseInt(img.getAttribute('data-tries') || '0', 10);
+  var base = img.getAttribute('data-src') || img.src;
+  var cdn = img.getAttribute('data-cdn');
+
+  if(tries < 2){
+    img.setAttribute('data-tries', tries + 1);
+    var next = base + '?r=' + (tries + 1);
+    setTimeout(function(){ img.src = next; }, 800 * (tries + 1));
+    return;
+  }
+  if(tries === 2 && cdn){
+    img.setAttribute('data-tries', 3);
+    img.src = cdn;
+    return;
+  }
+
+  var ph = document.createElement('div');
+  ph.className = img.classList.contains('thumb') ? 'thumb ph' : 'dimg ph';
+  ph.textContent = img.getAttribute('data-emoji') || '🐾';
+  img.parentNode && img.parentNode.replaceChild(ph, img);
+}
 </script>
 <script>
 (function(){
@@ -692,6 +764,23 @@ document.querySelectorAll('.card').forEach(function(card){
 
   function setCount(el, n){
     el.textContent = n > 0 ? (n + " 条评论") : "评论";
+  }
+
+  function savedNick(){
+    try { return localStorage.getItem(NICK) || ""; } catch(e){ return ""; }
+  }
+
+  /// Remember the nickname everywhere: hide the inputs, show "以 xx 评论".
+  function applyNickname(n){
+    try { localStorage.setItem(NICK, n); } catch(e){}
+    document.querySelectorAll(".cbox").forEach(function(box){
+      var input = box.querySelector(".cnick");
+      var who = box.querySelector(".cwho");
+      var name = box.querySelector(".cwhoname");
+      if(input){ input.value = n; input.hidden = true; }
+      if(who){ who.hidden = false; }
+      if(name){ name.textContent = n; }
+    });
   }
 
   api("comments?page_key=eq." + encodeURIComponent(PAGE) + "&select=moment_key")
@@ -729,7 +818,26 @@ document.querySelectorAll('.card').forEach(function(card){
     msg.className = "cmsg";
     var loaded = false;
 
-    try { var saved = localStorage.getItem(NICK); if(saved){ nick.value = saved; } } catch(e){}
+    var who = box.querySelector(".cwho");
+    var whoName = box.querySelector(".cwhoname");
+    var change = box.querySelector(".cchange");
+
+    var initial = savedNick();
+    if(initial){
+      nick.value = initial;
+      nick.hidden = true;
+      who.hidden = false;
+      whoName.textContent = initial;
+    }
+
+    if(change){
+      change.addEventListener("click", function(ev){
+        ev.stopPropagation();
+        who.hidden = true;
+        nick.hidden = false;
+        nick.focus();
+      });
+    }
 
     box.addEventListener("click", function(ev){ ev.stopPropagation(); });
 
@@ -764,7 +872,7 @@ document.querySelectorAll('.card').forEach(function(card){
       ev.stopPropagation();
       var n = (nick.value || "").trim();
       var b = (body.value || "").trim();
-      if(!n){ msg.textContent = "请先填写昵称"; if(!list.contains(msg)){ list.appendChild(msg); } return; }
+      if(!n){ msg.textContent = "请先填写昵称（填一次就会记住）"; if(!list.contains(msg)){ list.appendChild(msg); } return; }
       if(!b){ msg.textContent = "写点什么再发送吧"; if(!list.contains(msg)){ list.appendChild(msg); } return; }
 
       send.disabled = true;
@@ -777,7 +885,7 @@ document.querySelectorAll('.card').forEach(function(card){
         body: JSON.stringify({ page_key: PAGE, moment_key: key, nickname: n, body: b })
       })
         .then(function(rows){
-          try { localStorage.setItem(NICK, n); } catch(e){}
+          applyNickname(n);
           body.value = "";
           var row = (rows && rows[0]) || { nickname: n, body: b, created_at: new Date().toISOString() };
           if(list.contains(msg)){ list.removeChild(msg); }
