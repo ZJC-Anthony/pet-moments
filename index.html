@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Pet Moments · September 2026</title>
+<style>
+:root{
+  --bg:#FFF8F6; --surface:#FFF1ED; --card:#FFFFFF; --line:#F0E0DC;
+  --primary:#944931; --primary-soft:#D67D61; --on:#221A17; --muted:#54433E;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--bg);color:var(--on);
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue",Arial,sans-serif;
+  line-height:1.5}
+.wrap{max-width:760px;margin:0 auto;padding:24px 20px 48px}
+header.brand{display:flex;align-items:center;gap:14px;margin-bottom:26px}
+.avatar{width:52px;height:52px;border-radius:50%;background:var(--surface);
+  display:flex;align-items:center;justify-content:center;font-size:26px;flex:0 0 auto;object-fit:cover}
+.brand h1{margin:0;font-size:26px;color:var(--primary);letter-spacing:-.01em}
+.brand p{margin:2px 0 0;font-size:13px;color:var(--muted)}
+h2.pet{font-size:24px;color:var(--primary);margin:34px 0 14px}
+.petcard{display:flex;gap:14px;align-items:center;background:var(--card);
+  border:1px solid var(--line);border-radius:22px;padding:18px;box-shadow:0 10px 30px rgba(0,0,0,.04)}
+.petcard img,.petcard .ph{width:72px;height:72px;border-radius:50%;object-fit:cover;flex:0 0 auto;
+  background:var(--surface);display:flex;align-items:center;justify-content:center;font-size:30px}
+.petcard h3{margin:0;font-size:22px}
+.petcard p{margin:4px 0 0;font-size:14px;color:var(--muted)}
+.stats{display:flex;gap:12px;margin:16px 0 10px}
+.stat{flex:1;background:var(--card);border:1px solid var(--line);border-radius:16px;
+  padding:14px 8px;text-align:center}
+.stat .n{font-size:20px;font-weight:600}
+.stat .l{font-size:11px;letter-spacing:.06em;color:var(--muted);text-transform:uppercase;margin-top:2px}
+.day{display:inline-block;font-size:13px;font-weight:600;color:var(--primary);
+  background:var(--surface);padding:5px 14px;border-radius:999px;margin:24px 0 14px}
+.entry{display:flex;gap:10px;align-items:stretch}
+.rail{width:54px;flex:0 0 54px;display:flex;flex-direction:column;align-items:center;padding-top:2px}
+.rail .time{font-size:12px;font-weight:600;color:var(--muted);white-space:nowrap}
+.rail .track{position:relative;width:2px;flex:1;background:var(--line);border-radius:2px;margin-top:7px}
+.rail .dot{position:absolute;top:-2px;left:-3px;width:8px;height:8px;border-radius:50%}
+.card{flex:1;min-width:0;background:var(--card);border:1px solid var(--line);border-radius:16px;
+  padding:14px;box-shadow:0 10px 30px rgba(0,0,0,.04);cursor:pointer;margin-bottom:16px;
+  transition:transform .15s ease}
+.card:active{transform:scale(.995)}
+.row{display:flex;gap:12px;align-items:flex-start}
+.thumb{width:64px;height:64px;border-radius:12px;object-fit:cover;flex:0 0 auto;background:var(--surface)}
+.thumb.ph{display:flex;align-items:center;justify-content:center;font-size:24px}
+.body{flex:1;min-width:0}
+.chip{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;
+  padding:3px 10px;border-radius:999px}
+.note{margin:6px 0 0;font-size:15px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.toggle{margin:10px 0 0;font-size:12px;font-weight:600;color:var(--primary)}
+.toggle .less{display:none}
+.card.open .toggle .more{display:none}
+.card.open .toggle .less{display:inline}
+.card.open .note{-webkit-line-clamp:unset;display:block}
+.detail{display:none;margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}
+.card.open .detail{display:block}
+.detail img{width:100%;border-radius:14px;display:block;margin-bottom:12px}
+.detail p{margin:0 0 6px;font-size:14px;color:var(--muted);white-space:pre-wrap}
+.detail .full{font-size:15px;color:var(--on)}
+.months{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;margin-bottom:14px}
+.mchip{flex:0 0 auto;font-size:13px;font-weight:600;padding:6px 14px;border-radius:999px;
+  background:var(--surface);color:var(--muted);text-decoration:none}
+.mchip.current{background:var(--primary);color:#fff}
+.cbox{margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}
+.cbtn{background:var(--surface);border:none;border-radius:999px;padding:6px 12px;
+  font-size:12px;font-weight:600;color:var(--primary);cursor:pointer;font-family:inherit}
+.cthread{margin-top:10px}
+.clist{display:flex;flex-direction:column;gap:8px;margin-bottom:10px}
+.citem{background:var(--surface);border-radius:12px;padding:8px 10px}
+.cnick{font-size:12px;font-weight:600;color:var(--primary)}
+.citem .cbody{font-size:14px;color:var(--on);margin-top:2px;white-space:pre-wrap;word-break:break-word}
+.ctime{font-size:11px;color:var(--muted);margin-top:4px}
+.cform{display:flex;flex-direction:column;gap:8px}
+.cform input,.cform textarea{width:100%;border:1px solid var(--line);border-radius:10px;
+  padding:8px 10px;font-size:14px;font-family:inherit;background:var(--card);color:var(--on)}
+.csend{align-self:flex-end;background:var(--primary);color:#fff;border:none;border-radius:999px;
+  padding:8px 18px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit}
+.csend:disabled{opacity:.5}
+.cmsg{font-size:12px;color:var(--muted)}
+footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
+  font-size:12px;color:var(--muted);text-align:center}
+.empty{color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="brand">
+    <div class="avatar">🐾</div>
+    <div>
+      <h1>Pet Moments</h1>
+      <p>月度总结 · September 2026</p>
+    </div>
+  </header>
+  <nav class="months"><a class="mchip current" href="/pet-moments/s/month-2026-09.html">2026年9月</a></nav>
+  <h2 class="pet">辣条 的Sep</h2>
+<div class="petcard">
+  <img src="img/c8c4f70e878d3c6a62b223fb.jpg" alt="辣条">
+  <div>
+    <h3>辣条</h3>
+    <p>4个月 · 缅因 · 3.9 kg</p>
+  </div>
+</div>
+<div class="stats"><div class="stat"><div class="n">7</div><div class="l">观察</div></div><div class="stat"><div class="n">6</div><div class="l">玩耍</div></div><div class="stat"><div class="n">2</div><div class="l">剪指甲</div></div></div>
+<div class="day">今天 · Sep 25 · Fri</div><div class="entry">
+  <div class="rail">
+    <div class="time">14:24</div>
+    <div class="track"><span class="dot" style="background:#73B8BC"></span></div>
+  </div>
+  <div class="card">
+    <div class="row">
+      <img class="thumb" src="img/05696fc7d376083eadcedbae.jpg" alt="" loading="lazy">
+      <div class="body">
+        <span class="chip" style="color:#73B8BC;background:#73B8BC22">观察</span>
+        <p class="note">最近几天它都很想在角落里睡觉，不知道为啥</p>
+      </div>
+    </div>
+    <p class="toggle"><span class="more">点击展开 ▾</span><span class="less">收起 ▴</span></p>
+    <div class="detail">
+      <img src="img/05696fc7d376083eadcedbae.jpg" alt="" loading="lazy">
+      <p class="full">最近几天它都很想在角落里睡觉，不知道为啥</p>
+      <p>Sep 25, 2026 at 14:24</p>
+    </div>
+    <div class="cbox" data-moment="d712ba2d7f85a44a">
+  <button class="cbtn" type="button">💬 <span class="ccount" data-count="d712ba2d7f85a44a">评论</span></button>
+  <div class="cthread" hidden>
+    <div class="clist"></div>
+    <div class="cform">
+      <input class="cnick" type="text" maxlength="20" placeholder="你的昵称">
+      <textarea class="cbody" maxlength="300" rows="2" placeholder="说点什么…"></textarea>
+      <button class="csend" type="button">发送</button>
+    </div>
+  </div>
+</div>
+  </div>
+</div><div class="entry">
+  <div class="rail">
+    <div class="time">13:00</div>
+    <div class="track"><span class="dot" style="background:#73B8BC"></span></div>
+  </div>
+  <div class="card">
+    <div class="row">
+      <img class="thumb" src="img/b0abb580f60f1cb8f9a7df09.jpg" alt="" loading="lazy">
+      <div class="body">
+        <span class="chip" style="color:#73B8BC;background:#73B8BC22">观察</span>
+        <p class="note">安静晒太阳🌞</p>
+      </div>
+    </div>
+    <p class="toggle"><span class="more">点击展开 ▾</span><span class="less">收起 ▴</span></p>
+    <div class="detail">
+      <img src="img/b0abb580f60f1cb8f9a7df09.jpg" alt="" loading="lazy">
+      <p class="full">安静晒太阳🌞</p>
+      <p>Sep 25, 2026 at 13:00</p>
+    </div>
+    <div class="cbox" data-moment="0a3e8ebdfecfb26a">
+  <button class="cbtn" type="button">💬 <span class="ccount" data-count="0a3e8ebdfecfb26a">评论</span></button>
+  <div class="cthread" hidden>
+    <div class="clist"></div>
+    <div class="cform">
+      <input class="cnick" type="text" maxlength="20" placeholder="你的昵称">
+      <textarea class="cbody" maxlength="300" rows="2" placeholder="说点什么…"></textarea>
+      <button class="csend" type="button">发送</button>
+    </div>
+  </div>
+</div>
+  </div>
+</div><div class="day">昨天 · Sep 24 · Thu</div><div class="entry">
+  <div class="rail">
+    <div class="time">21:55</div>
+    <div class="track"><span class="dot" style="background:#73B8BC"></span></div>
+  </div>
+  <div class="card">
+    <div class="row">
+      <img class="thumb" src="img/8a383e22b4c9b5b6a95921f4.jpg" alt="" loading="lazy">
+      <div class="body">
+        <span class="chip" style="color:#73B8BC;background:#73B8BC22">观察</span>
+        <p class="note">昨天第一次出门啦，还跟小流浪猫搭讪，结果被哈气了</p>
+      </div>
+    </div>
+    <p class="toggle"><span class="more">点击展开 ▾</span><span class="less">收起 ▴</span></p>
+    <div class="detail">
+      <img src="img/8a383e22b4c9b5b6a95921f4.jpg" alt="" loading="lazy">
+      <p class="full">昨天第一次出门啦，还跟小流浪猫搭讪，结果被哈气了</p>
+      <p>Sep 24, 2026 at 21:55</p>
+    </div>
+    <div class="cbox" data-moment="803552f4a8dd59b4">
+  <button class="cbtn" type="button">💬 <span class="ccount" data-count="803552f4a8dd59b4">评论</span></button>
+  <div class="cthread" hidden>
+    <div class="clist"></div>
+    <div class="cform">
+      <input class="cnick" type="text" maxlength="20" placeholder="你的昵称">
+      <textarea class="cbody" maxlength="300" rows="2" placeholder="说点什么…"></textarea>
+      <button class="csend" type="button">发送</button>
+    </div>
+  </div>
+</div>
+  </div>
+</div><div class="entry">
+  <div class="rail">
+    <div class="time">8:53</div>
+    <div class="track"><span class="dot" style="background:#E8A598"></span></div>
+  </div>
+  <div class="card">
+    <div class="row">
+      <div class="thumb ph" style="background:#E8A59822">💅</div>
+      <div class="body">
+        <span class="chip" style="color:#E8A598;background:#E8A59822">剪指甲</span>
+        <p class="note">剪指甲啦，感觉脚指甲长的很慢</p>
+      </div>
+    </div>
+    <p class="toggle"><span class="more">点击展开 ▾</span><span class="less">收起 ▴</span></p>
+    <div class="detail">
+      
+      <p class="full">剪指甲啦，感觉脚指甲长的很慢</p>
+      <p>Sep 24, 2026 at 8:53</p>
+    </div>
+    <div class="cbox" data-moment="315e201fa4c0c287">
+  <button class="cbtn" type="button">💬 <span class="ccount" data-count="315e201fa4c0c287">评论</span></button>
+  <div class="cthread" hidden>
+    <div class="clist"></div>
+    <div class="cform">
+      <input class="cnick" type="text" maxlength="20" placeholder="你的昵称">
+      <textarea class="cbody" maxlength="300" rows="2" placeholder="说点什么…"></textarea>
+      <button class="csend" type="button">发送</button>
+    </div>
+  </div>
+</div>
+  </div>
+</div><div class="day">Sep 20 · Sun</div><div class="entry">
+  <div class="rail">
+    <div class="time">10:10</div>
+    <div class="track"><span class="dot" style="background:#8BA888"></span></div>
+  </div>
+  <div class="card">
+    <div class="row">
+      <div class="thumb ph" style="background:#8BA88822">🐾</div>
+      <div class="body">
+        <span class="chip" style="color:#8BA888;background:#8BA88822">剃脚毛</span>
+        <p class="note">第一次剃，也不管美不美观啦</p>
+      </div>
+    </div>
+    <p class="toggle"><span class="more">点击展开 ▾</span><span class="less">收起 ▴</span></p>
+    <div class="detail">
+      
+      <p class="full">第一次剃，也不管美不美观啦</p>
+      <p>Sep 20, 2026 at 10:10</p>
+    </div>
+    <div class="cbox" data-moment="31b4c83c048f8081">
+  <button class="cbtn" type="button">💬 <span class="ccount" data-count="31b4c83c048f8081">评论</span></button>
+  <div class="cthread" hidden>
+    <div class="clist"></div>
+    <div class="cform">
+      <input class="cnick" type="text" maxlength="20" placeholder="你的昵称">
+      <textarea class="cbody" maxlength="300" rows="2" placeholder="说点什么…"></textarea>
+      <button class="csend" type="button">发送</button>
+    </div>
+  </div>
+</div>
+  </div>
+</div><div class="day">Sep 19 · Sat</div><div class="entry">
+  <div class="rail">
+    <div class="time">11:15</div>
+    <div class="track"><span class="dot" style="background:#73B8BC"></span></div>
+  </div>
+  <div class="card">
+    <div class="row">
+      <img class="thumb" src="img/31d54e9fe686dc6b8c59e788.jpg" alt="" loading="lazy">
+      <div class="body">
+        <span class="chip" style="color:#73B8BC;background:#73B8BC22">观察</span>
+        <p class="note">最近它很喜欢望向窗外，感觉要越狱了</p>
+      </div>
+    </div>
+    <p class="toggle"><span class="more">点击展开 ▾</span><span class="less">收起 ▴</span></p>
+    <div class="detail">
+      <img src="img/31d54e9fe686dc6b8c59e788.jpg" alt="" loading="lazy">
+      <p class="full">最近它很喜欢望向窗外，感觉要越狱了</p>
+      <p>Sep 19, 2026 at 11:15</p>
+    </div>
+    <div class="cbox" data-moment="504596ea1dd10620">
+  <button class="cbtn" type="button">💬 <span class="ccount" data-count="504596ea1dd10620">评论</span></button>
+  <div class="cthread" hidden>
+    <div class="clist"></div>
+    <div class="cform">
+      <input class="cnick" type="text" maxlength="20" placeholder="你的昵称">
+      <textarea class="cbody" maxlength="300" rows="2" placeholder="说点什么…"></textarea>
+      <button class="csend" type="button">发送</button>
+    </div>
+  </div>
+</div>
+  </div>
+</div><div class="day">Sep 13 · Sun</div><div class="entry">
+  <div class="rail">
+    <div class="time">10:01</div>
+    <div class="track"><span class="dot" style="background:#E8A598"></span></div>
+  </div>
+  <div class="card">
+    <div class="row">
+      <img class="thumb" src="img/fbc179035b988e760d043b46.jpg" alt="" loading="lazy">
+      <div class="body">
+        <span class="chip" style="color:#E8A598;background:#E8A59822">剪指甲</span>
+        <p class="note">安静剪完指甲，奖励一个小零食，但是还想吃</p>
+      </div>
+    </div>
+    <p class="toggle"><span class="more">点击展开 ▾</span><span class="less">收起 ▴</span></p>
+    <div class="detail">
+      <img src="img/fbc179035b988e760d043b46.jpg" alt="" loading="lazy">
+      <p class="full">安静剪完指甲，奖励一个小零食，但是还想吃</p>
+      <p>Sep 13, 2026 at 10:01</p>
+    </div>
+    <div class="cbox" data-moment="0f8abfdcc5f3d3a7">
+  <button class="cbtn" type="button">💬 <span class="ccount" data-count="0f8abfdcc5f3d3a7">评论</span></button>
+  <div class="cthread" hidden>
+    <div class="clist"></div>
+    <div class="cform">
+      <input class="cnick" type="text" maxlength="20" placeholder="你的昵称">
+      <textarea class="cbody" maxlength="300" rows="2" placeholder="说点什么…"></textarea>
+      <button class="csend" type="button">发送</button>
+    </div>
+  </div>
+</div>
+  </div>
+</div><div class="day">Sep 10 · Thu</div><div class="entry">
+  <div class="rail">
+    <div class="time">10:23</div>
+    <div class="track"><span class="dot" style="background:#7FB6D8"></span></div>
+  </div>
+  <div class="card">
+    <div class="row">
+      <img class="thumb" src="img/ffb17a1894a659c03bc0e66b.jpg" alt="" loading="lazy">
+      <div class="body">
+        <span class="chip" style="color:#7FB6D8;background:#7FB6D822">玩耍</span>
+        <p class="note">自己晒太阳，自己舔毛</p>
+      </div>
+    </div>
+    <p class="toggle"><span class="more">点击展开 ▾</span><span class="less">收起 ▴</span></p>
+    <div class="detail">
+      <img src="img/ffb17a1894a659c03bc0e66b.jpg" alt="" loading="lazy">
+      <p class="full">自己晒太阳，自己舔毛</p>
+      <p>Sep 10, 2026 at 10:23</p>
+    </div>
+    <div class="cbox" data-moment="ee64e462bb2407db">
+  <button class="cbtn" type="button">💬 <span class="ccount" data-count="ee64e462bb2407db">评论</span></button>
+  <div class="cthread" hidden>
+    <div class="clist"></div>
+    <div class="cform">
+      <input class="cnick" type="text" maxlength="20" placeholder="你的昵称">
+      <textarea class="cbody" maxlength="300" rows="2" placeholder="说点什么…"></textarea>
+      <button class="csend" type="button">发送</button>
+    </div>
+  </div>
+</div>
+  </div>
+</div><div class="day">Sep 9 · Wed</div><div class="entry">
+  <div class="rail">
+    <div class="time">22:48</div>
+    <div class="track"><span class="dot" style="background:#9BB48C"></span></div>
+  </div>
+  <div class="card">
+    <div class="row">
+      <img class="thumb" src="img/18261b88113e21376f60463c.jpg" alt="" loading="lazy">
+      <div class="body">
+        <span class="chip" style="color:#9BB48C;background:#9BB48C22">驱虫</span>
+        <p class="note">今天外驱</p>
+      </div>
+    </div>
+    <p class="toggle"><span class="more">点击展开 ▾</span><span class="less">收起 ▴</span></p>
+    <div class="detail">
+      <img src="img/18261b88113e21376f60463c.jpg" alt="" loading="lazy">
+      <p class="full">今天外驱</p>
+      <p>Sep 9, 2026 at 22:48</p>
+    </div>
+    <div class="cbox" data-moment="d1fc5c49eeda8127">
+  <button class="cbtn" type="button">💬 <span class="ccount" data-count="d1fc5c49eeda8127">评论</span></button>
+  <div class="cthread" hidden>
+    <div class="clist"></div>
+    <div class="cform">
+      <input class="cnick" type="text" maxlength="20" placeholder="你的昵称">
+      <textarea class="cbody" maxlength="300" rows="2" placeholder="说点什么…"></textarea>
+      <button class="csend" type="button">发送</button>
+    </div>
+  </div>
+</div>
+  </div>
+</div><div class="entry">
+  <div class="rail">
+    <div class="time">7:47</div>
+    <div class="track"><span class="dot" style="background:#73B8BC"></span></div>
+  </div>
+  <div class="card">
+    <div class="row">
+      <img class="thumb" src="img/3daacff81ecb0a1f2003a72d.jpg" alt="" loading="lazy">
+      <div class="body">
+        <span class="chip" style="color:#73B8BC;background:#73B8BC22">观察</span>
+        <p class="note">无备注</p>
+      </div>
+    </div>
+    <p class="toggle"><span class="more">点击展开 ▾</span><span class="less">收起 ▴</span></p>
+    <div class="detail">
+      <img src="img/3daacff81ecb0a1f2003a72d.jpg" alt="" loading="lazy">
+      <p class="full">无备注</p>
+      <p>Sep 9, 2026 at 7:47</p>
+    </div>
+    <div class="cbox" data-moment="146f04507307f7aa">
+  <button class="cbtn" type="button">💬 <span class="ccount" data-count="146f04507307f7aa">评论</span></button>
+  <div class="cthread" hidden>
+    <div class="clist"></div>
+    <div class="cform">
+      <input class="cnick" type="text" maxlength="20" placeholder="你的昵称">
+      <textarea class="cbody" maxlength="300" rows="2" placeholder="说点什么…"></textarea>
+      <button class="csend" type="button">发送</button>
+    </div>
+  </div>
+</div>
+  </div>
+</div><div class="day">Sep 8 · Tue</div><div class="entry">
+  <div class="rail">
+    <div class="time">22:06</div>
+    <div class="track"><span class="dot" style="background:#7FB6D8"></span></div>
+  </div>
+  <div class="card">
+    <div class="row">
+      <img class="thumb" src="img/95bc5c9448b9be40fd4bc69e.jpg" alt="" loading="lazy">
+      <div class="body">
+        <span class="chip" style="color:#7FB6D8;background:#7FB6D822">玩耍</span>
+        <p class="note">由于它上窗台发现了之前它玩烂的羽毛逗猫棒，现在开始自娱自乐，已经玩了20分钟了</p>
+      </div>
+    </div>
+    <p class="toggle"><span class="more">点击展开 ▾</span><span class="less">收起 ▴</span></p>
+    <div class="detail">
+      <img src="img/95bc5c9448b9be40fd4bc69e.jpg" alt="" loading="lazy">
+      <p class="full">由于它上窗台发现了之前它玩烂的羽毛逗猫棒，现在开始自娱自乐，已经玩了20分钟了</p>
+      <p>Sep 8, 2026 at 22:06</p>
+    </div>
+    <div class="cbox" data-moment="3a2b155713d1d3d0">
+  <button class="cbtn" type="button">💬 <span class="ccount" data-count="3a2b155713d1d3d0">评论</span></button>
+  <div class="cthread" hidden>
+    <div class="clist"></div>
+    <div class="cform">
+      <input class="cnick" type="text" maxlength="20" placeholder="你的昵称">
+      <textarea class="cbody" maxlength="300" rows="2" placeholder="说点什么…"></textarea>
+      <button class="csend" type="button">发送</button>
+    </div>
+  </div>
+</div>
+  </div>
+</div><div class="entry">
+  <div class="rail">
+    <div class="time">11:23</div>
+    <div class="track"><span class="dot" style="background:#7FB6D8"></span></div>
+  </div>
+  <div class="card">
+    <div class="row">
+      <img class="thumb" src="img/d43a915af8110639929259f0.jpg" alt="" loading="lazy">
+      <div class="body">
+        <span class="chip" style="color:#7FB6D8;background:#7FB6D822">玩耍</span>
+        <p class="note">引诱它晒太阳</p>
+      </div>
+    </div>
+    <p class="toggle"><span class="more">点击展开 ▾</span><span class="less">收起 ▴</span></p>
+    <div class="detail">
+      <img src="img/d43a915af8110639929259f0.jpg" alt="" loading="lazy">
+      <p class="full">引诱它晒太阳</p>
+      <p>Sep 8, 2026 at 11:23</p>
+    </div>
+    <div class="cbox" data-moment="4294f81614ca62cb">
+  <button class="cbtn" type="button">💬 <span class="ccount" data-count="4294f81614ca62cb">评论</span></button>
+  <div class="cthread" hidden>
+    <div class="clist"></div>
+    <div class="cform">
+      <input class="cnick" type="text" maxlength="20" placeholder="你的昵称">
+      <textarea class="cbody" maxlength="300" rows="2" placeholder="说点什么…"></textarea>
+      <button class="csend" type="button">发送</button>
+    </div>
+  </div>
+</div>
+  </div>
+</div><div class="entry">
+  <div class="rail">
+    <div class="time">9:17</div>
+    <div class="track"><span class="dot" style="background:#73B8BC"></span></div>
+  </div>
+  <div class="card">
+    <div class="row">
+      <img class="thumb" src="img/d0a57dcbc8a8b64615a139ee.jpg" alt="" loading="lazy">
+      <div class="body">
+        <span class="chip" style="color:#73B8BC;background:#73B8BC22">观察</span>
+        <p class="note">自己晒太阳，十分不错，之前要想办法给他晒太阳</p>
+      </div>
+    </div>
+    <p class="toggle"><span class="more">点击展开 ▾</span><span class="less">收起 ▴</span></p>
+    <div class="detail">
+      <img src="img/d0a57dcbc8a8b64615a139ee.jpg" alt="" loading="lazy">
+      <p class="full">自己晒太阳，十分不错，之前要想办法给他晒太阳</p>
+      <p>Sep 8, 2026 at 9:17</p>
+    </div>
+    <div class="cbox" data-moment="22037c8ce6c583ff">
+  <button class="cbtn" type="button">💬 <span class="ccount" data-count="22037c8ce6c583ff">评论</span></button>
+  <div class="cthread" hidden>
+    <div class="clist"></div>
+    <div class="cform">
+      <input class="cnick" type="text" maxlength="20" placeholder="你的昵称">
+      <textarea class="cbody" maxlength="300" rows="2" placeholder="说点什么…"></textarea>
+      <button class="csend" type="button">发送</button>
+    </div>
+  </div>
+</div>
+  </div>
+</div><div class="day">Sep 7 · Mon</div><div class="entry">
+  <div class="rail">
+    <div class="time">19:12</div>
+    <div class="track"><span class="dot" style="background:#7FB6D8"></span></div>
+  </div>
+  <div class="card">
+    <div class="row">
+      <img class="thumb" src="img/2f8746b077fea796d9683ed8.jpg" alt="" loading="lazy">
+      <div class="body">
+        <span class="chip" style="color:#7FB6D8;background:#7FB6D822">玩耍</span>
+        <p class="note">新玩具，玩了5分钟已经玩烂了</p>
+      </div>
+    </div>
+    <p class="toggle"><span class="more">点击展开 ▾</span><span class="less">收起 ▴</span></p>
+    <div class="detail">
+      <img src="img/2f8746b077fea796d9683ed8.jpg" alt="" loading="lazy">
+      <p class="full">新玩具，玩了5分钟已经玩烂了</p>
+      <p>Sep 7, 2026 at 19:12</p>
+    </div>
+    <div class="cbox" data-moment="bed830aae071df50">
+  <button class="cbtn" type="button">💬 <span class="ccount" data-count="bed830aae071df50">评论</span></button>
+  <div class="cthread" hidden>
+    <div class="clist"></div>
+    <div class="cform">
+      <input class="cnick" type="text" maxlength="20" placeholder="你的昵称">
+      <textarea class="cbody" maxlength="300" rows="2" placeholder="说点什么…"></textarea>
+      <button class="csend" type="button">发送</button>
+    </div>
+  </div>
+</div>
+  </div>
+</div><div class="entry">
+  <div class="rail">
+    <div class="time">17:23</div>
+    <div class="track"><span class="dot" style="background:#73B8BC"></span></div>
+  </div>
+  <div class="card">
+    <div class="row">
+      <img class="thumb" src="img/94aa463fc4a006d3af461696.jpg" alt="" loading="lazy">
+      <div class="body">
+        <span class="chip" style="color:#73B8BC;background:#73B8BC22">观察</span>
+        <p class="note">已经大到可以跳上厨房台面了，以前放的东西都得收起来了</p>
+      </div>
+    </div>
+    <p class="toggle"><span class="more">点击展开 ▾</span><span class="less">收起 ▴</span></p>
+    <div class="detail">
+      <img src="img/94aa463fc4a006d3af461696.jpg" alt="" loading="lazy">
+      <p class="full">已经大到可以跳上厨房台面了，以前放的东西都得收起来了</p>
+      <p>Sep 7, 2026 at 17:23</p>
+    </div>
+    <div class="cbox" data-moment="b8976088b9514c81">
+  <button class="cbtn" type="button">💬 <span class="ccount" data-count="b8976088b9514c81">评论</span></button>
+  <div class="cthread" hidden>
+    <div class="clist"></div>
+    <div class="cform">
+      <input class="cnick" type="text" maxlength="20" placeholder="你的昵称">
+      <textarea class="cbody" maxlength="300" rows="2" placeholder="说点什么…"></textarea>
+      <button class="csend" type="button">发送</button>
+    </div>
+  </div>
+</div>
+  </div>
+</div><div class="day">Sep 6 · Sun</div><div class="entry">
+  <div class="rail">
+    <div class="time">23:11</div>
+    <div class="track"><span class="dot" style="background:#9BB48C"></span></div>
+  </div>
+  <div class="card">
+    <div class="row">
+      <div class="thumb ph" style="background:#9BB48C22">💊</div>
+      <div class="body">
+        <span class="chip" style="color:#9BB48C;background:#9BB48C22">驱虫</span>
+        <p class="note">第一次内驱</p>
+      </div>
+    </div>
+    <p class="toggle"><span class="more">点击展开 ▾</span><span class="less">收起 ▴</span></p>
+    <div class="detail">
+      
+      <p class="full">第一次内驱</p>
+      <p>Sep 6, 2026 at 23:11</p>
+    </div>
+    <div class="cbox" data-moment="fa57d0a8e52964d2">
+  <button class="cbtn" type="button">💬 <span class="ccount" data-count="fa57d0a8e52964d2">评论</span></button>
+  <div class="cthread" hidden>
+    <div class="clist"></div>
+    <div class="cform">
+      <input class="cnick" type="text" maxlength="20" placeholder="你的昵称">
+      <textarea class="cbody" maxlength="300" rows="2" placeholder="说点什么…"></textarea>
+      <button class="csend" type="button">发送</button>
+    </div>
+  </div>
+</div>
+  </div>
+</div><div class="day">Sep 1 · Tue</div><div class="entry">
+  <div class="rail">
+    <div class="time">18:56</div>
+    <div class="track"><span class="dot" style="background:#7FB6D8"></span></div>
+  </div>
+  <div class="card">
+    <div class="row">
+      <img class="thumb" src="img/120d024bfa6d565178ce818c.jpg" alt="" loading="lazy">
+      <div class="body">
+        <span class="chip" style="color:#7FB6D8;background:#7FB6D822">玩耍</span>
+        <p class="note">在思考要不要给它剃脚毛，他总打滑怕有关节问题</p>
+      </div>
+    </div>
+    <p class="toggle"><span class="more">点击展开 ▾</span><span class="less">收起 ▴</span></p>
+    <div class="detail">
+      <img src="img/120d024bfa6d565178ce818c.jpg" alt="" loading="lazy">
+      <p class="full">在思考要不要给它剃脚毛，他总打滑怕有关节问题</p>
+      <p>Sep 1, 2026 at 18:56</p>
+    </div>
+    <div class="cbox" data-moment="406299a5880cba72">
+  <button class="cbtn" type="button">💬 <span class="ccount" data-count="406299a5880cba72">评论</span></button>
+  <div class="cthread" hidden>
+    <div class="clist"></div>
+    <div class="cform">
+      <input class="cnick" type="text" maxlength="20" placeholder="你的昵称">
+      <textarea class="cbody" maxlength="300" rows="2" placeholder="说点什么…"></textarea>
+      <button class="csend" type="button">发送</button>
+    </div>
+  </div>
+</div>
+  </div>
+</div><div class="entry">
+  <div class="rail">
+    <div class="time">12:45</div>
+    <div class="track"><span class="dot" style="background:#7FB6D8"></span></div>
+  </div>
+  <div class="card">
+    <div class="row">
+      <img class="thumb" src="img/3c8ea1f794e7f32632814e23.jpg" alt="" loading="lazy">
+      <div class="body">
+        <span class="chip" style="color:#7FB6D8;background:#7FB6D822">玩耍</span>
+        <p class="note">最近发现它很喜欢在猫爬架附近躺着玩逗猫棒</p>
+      </div>
+    </div>
+    <p class="toggle"><span class="more">点击展开 ▾</span><span class="less">收起 ▴</span></p>
+    <div class="detail">
+      <img src="img/3c8ea1f794e7f32632814e23.jpg" alt="" loading="lazy">
+      <p class="full">最近发现它很喜欢在猫爬架附近躺着玩逗猫棒</p>
+      <p>Sep 1, 2026 at 12:45</p>
+    </div>
+    <div class="cbox" data-moment="5af186d236a75c5d">
+  <button class="cbtn" type="button">💬 <span class="ccount" data-count="5af186d236a75c5d">评论</span></button>
+  <div class="cthread" hidden>
+    <div class="clist"></div>
+    <div class="cform">
+      <input class="cnick" type="text" maxlength="20" placeholder="你的昵称">
+      <textarea class="cbody" maxlength="300" rows="2" placeholder="说点什么…"></textarea>
+      <button class="csend" type="button">发送</button>
+    </div>
+  </div>
+</div>
+  </div>
+</div>
+  <footer>由「宠物瞬间」App 生成 · Sep 25, 2026</footer>
+</div>
+<script>
+document.querySelectorAll('.card').forEach(function(card){
+  card.addEventListener('click', function(){ card.classList.toggle('open'); });
+});
+</script>
+<script>
+(function(){
+  var SB = "https://rxqinbgklxtelpggrpip.supabase.co";
+  var KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ4cWluYmdrbHh0ZWxwZ2dycGlwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTAzMjM5MjEsImV4cCI6MjEwNTg5OTkyMX0.sxKQiTnoNDMIRtETqYDOq2inGNQhcSM88ZXRqmjPFHs";
+  var PAGE = "2026-09";
+  var NICK = "petmoments_nick";
+
+  function api(path, opts){
+    opts = opts || {};
+    opts.headers = Object.assign({
+      "apikey": KEY,
+      "Authorization": "Bearer " + KEY,
+      "Content-Type": "application/json"
+    }, opts.headers || {});
+    return fetch(SB + "/rest/v1/" + path, opts).then(function(r){
+      if(!r.ok){ return r.text().then(function(t){ throw new Error(t); }); }
+      return r.status === 204 ? null : r.json();
+    });
+  }
+
+  function setCount(el, n){
+    el.textContent = n > 0 ? (n + " 条评论") : "评论";
+  }
+
+  api("comments?page_key=eq." + encodeURIComponent(PAGE) + "&select=moment_key")
+    .then(function(rows){
+      var counts = {};
+      (rows || []).forEach(function(r){ counts[r.moment_key] = (counts[r.moment_key] || 0) + 1; });
+      document.querySelectorAll("[data-count]").forEach(function(el){
+        setCount(el, counts[el.getAttribute("data-count")] || 0);
+      });
+    })
+    .catch(function(){});
+
+  function build(c){
+    var d = document.createElement("div"); d.className = "citem";
+    var n = document.createElement("div"); n.className = "cnick"; n.textContent = c.nickname;
+    var b = document.createElement("div"); b.className = "cbody"; b.textContent = c.body;
+    var t = document.createElement("div"); t.className = "ctime";
+    try {
+      t.textContent = new Date(c.created_at).toLocaleString("zh-CN",
+        {month:"numeric", day:"numeric", hour:"2-digit", minute:"2-digit"});
+    } catch(e){ t.textContent = ""; }
+    d.appendChild(n); d.appendChild(b); d.appendChild(t);
+    return d;
+  }
+
+  document.querySelectorAll(".cbox").forEach(function(box){
+    var key = box.getAttribute("data-moment");
+    var btn = box.querySelector(".cbtn");
+    var thread = box.querySelector(".cthread");
+    var list = box.querySelector(".clist");
+    var nick = box.querySelector(".cnick");
+    var body = box.querySelector(".cbody");
+    var send = box.querySelector(".csend");
+    var msg = document.createElement("div");
+    msg.className = "cmsg";
+    var loaded = false;
+
+    try { var saved = localStorage.getItem(NICK); if(saved){ nick.value = saved; } } catch(e){}
+
+    box.addEventListener("click", function(ev){ ev.stopPropagation(); });
+
+    btn.addEventListener("click", function(ev){
+      ev.stopPropagation();
+      var isOpen = !thread.hidden;
+      thread.hidden = isOpen;
+      if(isOpen || loaded){ return; }
+      loaded = true;
+      list.innerHTML = "";
+      list.appendChild(msg);
+      msg.textContent = "加载中…";
+      api("comments?moment_key=eq." + encodeURIComponent(key)
+          + "&order=created_at.asc&select=nickname,body,created_at")
+        .then(function(rows){
+          list.innerHTML = "";
+          if(!rows || !rows.length){
+            list.appendChild(msg);
+            msg.textContent = "还没有评论，来说两句吧～";
+            return;
+          }
+          rows.forEach(function(c){ list.appendChild(build(c)); });
+        })
+        .catch(function(err){
+          list.innerHTML = "";
+          list.appendChild(msg);
+          msg.textContent = "评论加载失败，请稍后再试";
+        });
+    });
+
+    send.addEventListener("click", function(ev){
+      ev.stopPropagation();
+      var n = (nick.value || "").trim();
+      var b = (body.value || "").trim();
+      if(!n){ msg.textContent = "请先填写昵称"; if(!list.contains(msg)){ list.appendChild(msg); } return; }
+      if(!b){ msg.textContent = "写点什么再发送吧"; if(!list.contains(msg)){ list.appendChild(msg); } return; }
+
+      send.disabled = true;
+      msg.textContent = "发送中…";
+      if(!list.contains(msg)){ list.appendChild(msg); }
+
+      api("comments", {
+        method: "POST",
+        headers: { "Prefer": "return=representation" },
+        body: JSON.stringify({ page_key: PAGE, moment_key: key, nickname: n, body: b })
+      })
+        .then(function(rows){
+          try { localStorage.setItem(NICK, n); } catch(e){}
+          body.value = "";
+          var row = (rows && rows[0]) || { nickname: n, body: b, created_at: new Date().toISOString() };
+          if(list.contains(msg)){ list.removeChild(msg); }
+          list.appendChild(build(row));
+          var cnt = box.querySelector(".ccount");
+          var current = parseInt((cnt.textContent || "").replace(/\D/g, ""), 10) || 0;
+          setCount(cnt, current + 1);
+          msg.textContent = "已发送 ✅";
+          list.appendChild(msg);
+        })
+        .catch(function(err){
+          msg.textContent = "发送失败，请稍后再试";
+        })
+        .then(function(){ send.disabled = false; });
+    });
+  });
+})();
+</script>
+</body>
+</html>
