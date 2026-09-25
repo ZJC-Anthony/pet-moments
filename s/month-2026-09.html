@@ -107,9 +107,24 @@ function pmImgError(img){
     return;
   }
 
+  var isThumb = img.classList.contains('thumb');
   var ph = document.createElement('div');
-  ph.className = img.classList.contains('thumb') ? 'thumb ph' : 'dimg ph';
+  ph.className = isThumb ? 'thumb ph' : 'dimg ph';
   ph.textContent = img.getAttribute('data-emoji') || '🐾';
+  ph.title = '点击重试';
+  ph.style.cursor = 'pointer';
+  // Never give up for good: a tap rebuilds the image with a fresh URL, so a
+  // one-off network hiccup doesn't leave a hole on the page.
+  ph.onclick = function(){
+    var again = document.createElement('img');
+    again.className = isThumb ? 'thumb' : 'dimg';
+    again.setAttribute('data-src', base);
+    if(cdn){ again.setAttribute('data-cdn', cdn); }
+    again.setAttribute('data-emoji', img.getAttribute('data-emoji') || '🐾');
+    again.onerror = function(){ pmImgError(again); };
+    again.src = base + (base.indexOf('?') >= 0 ? '&' : '?') + 'r=' + Date.now();
+    ph.parentNode && ph.parentNode.replaceChild(again, ph);
+  };
   img.parentNode && img.parentNode.replaceChild(ph, img);
 }
 </script>
@@ -126,7 +141,7 @@ function pmImgError(img){
   <nav class="months" id="pmMonths" data-current="2026-09" data-base="/pet-moments/"></nav>
   <h2 class="pet">辣条 的Sep</h2>
 <div class="petcard">
-  <img src="/pet-moments/s/img/0bddeceeb9f3c287f25f6f72.jpg" data-src="/pet-moments/s/img/0bddeceeb9f3c287f25f6f72.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/0bddeceeb9f3c287f25f6f72.jpg" data-emoji="🐱" alt="辣条" onerror="pmImgError(this)">
+  <img src="/pet-moments/s/img/d96c62983969980618a8c66b.jpg" data-src="/pet-moments/s/img/d96c62983969980618a8c66b.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/d96c62983969980618a8c66b.jpg" data-emoji="🐱" alt="辣条" onerror="pmImgError(this)">
   <div>
     <h3>辣条</h3>
     <p>4个月 · 缅因 · 3.9 kg</p>
@@ -140,7 +155,7 @@ function pmImgError(img){
   </div>
   <div class="card">
     <div class="row">
-      <img class="thumb" src="/pet-moments/s/img/9d519c8668ce02492c938750.jpg" data-src="/pet-moments/s/img/9d519c8668ce02492c938750.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/9d519c8668ce02492c938750.jpg" data-emoji="🐾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
+      <img class="thumb" src="/pet-moments/s/img/403ac296dac6c04a5b1336ef.jpg" data-src="/pet-moments/s/img/403ac296dac6c04a5b1336ef.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/403ac296dac6c04a5b1336ef.jpg" data-emoji="🐾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
       <div class="body">
         <span class="chip" style="color:#73B8BC;background:#73B8BC22">观察</span>
         <p class="note">最近几天它都很想在角落里睡觉，不知道为啥</p>
@@ -148,12 +163,12 @@ function pmImgError(img){
     </div>
     <p class="toggle"><span class="more">点击展开 ▾</span><span class="less">收起 ▴</span></p>
     <div class="detail">
-      <img class="dimg" src="/pet-moments/s/img/9d519c8668ce02492c938750.jpg" data-src="/pet-moments/s/img/9d519c8668ce02492c938750.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/9d519c8668ce02492c938750.jpg" data-emoji="🐾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
+      <img class="dimg" data-large="/pet-moments/s/img/9d519c8668ce02492c938750.jpg" data-src="/pet-moments/s/img/9d519c8668ce02492c938750.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/9d519c8668ce02492c938750.jpg" data-emoji="🐾" alt="" decoding="async" onerror="pmImgError(this)">
       <p class="full">最近几天它都很想在角落里睡觉，不知道为啥</p>
       <p>Sep 25, 2026 at 14:24</p>
     </div>
-    <div class="cbox" data-moment="1424022dd3fb3d42">
-  <button class="cbtn" type="button">💬 <span class="ccount" data-count="1424022dd3fb3d42">评论</span></button>
+    <div class="cbox" data-moment="26f43488e9b09d7d">
+  <button class="cbtn" type="button">💬 <span class="ccount" data-count="26f43488e9b09d7d">评论</span></button>
   <div class="cthread" hidden>
     <div class="clist"></div>
     <div class="cform">
@@ -172,7 +187,7 @@ function pmImgError(img){
   </div>
   <div class="card">
     <div class="row">
-      <img class="thumb" src="/pet-moments/s/img/d24d830cc62846ba8ecc5719.jpg" data-src="/pet-moments/s/img/d24d830cc62846ba8ecc5719.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/d24d830cc62846ba8ecc5719.jpg" data-emoji="🐾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
+      <img class="thumb" src="/pet-moments/s/img/a1622775c3e0792e8ac8a1f6.jpg" data-src="/pet-moments/s/img/a1622775c3e0792e8ac8a1f6.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/a1622775c3e0792e8ac8a1f6.jpg" data-emoji="🐾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
       <div class="body">
         <span class="chip" style="color:#73B8BC;background:#73B8BC22">观察</span>
         <p class="note">安静晒太阳🌞</p>
@@ -180,12 +195,12 @@ function pmImgError(img){
     </div>
     <p class="toggle"><span class="more">点击展开 ▾</span><span class="less">收起 ▴</span></p>
     <div class="detail">
-      <img class="dimg" src="/pet-moments/s/img/d24d830cc62846ba8ecc5719.jpg" data-src="/pet-moments/s/img/d24d830cc62846ba8ecc5719.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/d24d830cc62846ba8ecc5719.jpg" data-emoji="🐾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
+      <img class="dimg" data-large="/pet-moments/s/img/d24d830cc62846ba8ecc5719.jpg" data-src="/pet-moments/s/img/d24d830cc62846ba8ecc5719.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/d24d830cc62846ba8ecc5719.jpg" data-emoji="🐾" alt="" decoding="async" onerror="pmImgError(this)">
       <p class="full">安静晒太阳🌞</p>
       <p>Sep 25, 2026 at 13:00</p>
     </div>
-    <div class="cbox" data-moment="7ae3647ad48f5616">
-  <button class="cbtn" type="button">💬 <span class="ccount" data-count="7ae3647ad48f5616">评论</span></button>
+    <div class="cbox" data-moment="eafc0af1d343b333">
+  <button class="cbtn" type="button">💬 <span class="ccount" data-count="eafc0af1d343b333">评论</span></button>
   <div class="cthread" hidden>
     <div class="clist"></div>
     <div class="cform">
@@ -204,7 +219,7 @@ function pmImgError(img){
   </div>
   <div class="card">
     <div class="row">
-      <img class="thumb" src="/pet-moments/s/img/2973f2debcddf909f94a92c3.jpg" data-src="/pet-moments/s/img/2973f2debcddf909f94a92c3.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/2973f2debcddf909f94a92c3.jpg" data-emoji="🐾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
+      <img class="thumb" src="/pet-moments/s/img/dd4137c82d9ca784f85f45d3.jpg" data-src="/pet-moments/s/img/dd4137c82d9ca784f85f45d3.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/dd4137c82d9ca784f85f45d3.jpg" data-emoji="🐾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
       <div class="body">
         <span class="chip" style="color:#73B8BC;background:#73B8BC22">观察</span>
         <p class="note">昨天第一次出门啦，还跟小流浪猫搭讪，结果被哈气了</p>
@@ -212,12 +227,12 @@ function pmImgError(img){
     </div>
     <p class="toggle"><span class="more">点击展开 ▾</span><span class="less">收起 ▴</span></p>
     <div class="detail">
-      <img class="dimg" src="/pet-moments/s/img/2973f2debcddf909f94a92c3.jpg" data-src="/pet-moments/s/img/2973f2debcddf909f94a92c3.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/2973f2debcddf909f94a92c3.jpg" data-emoji="🐾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
+      <img class="dimg" data-large="/pet-moments/s/img/2973f2debcddf909f94a92c3.jpg" data-src="/pet-moments/s/img/2973f2debcddf909f94a92c3.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/2973f2debcddf909f94a92c3.jpg" data-emoji="🐾" alt="" decoding="async" onerror="pmImgError(this)">
       <p class="full">昨天第一次出门啦，还跟小流浪猫搭讪，结果被哈气了</p>
       <p>Sep 24, 2026 at 21:55</p>
     </div>
-    <div class="cbox" data-moment="2d9e317571c67c93">
-  <button class="cbtn" type="button">💬 <span class="ccount" data-count="2d9e317571c67c93">评论</span></button>
+    <div class="cbox" data-moment="1877f0f90c56ea7f">
+  <button class="cbtn" type="button">💬 <span class="ccount" data-count="1877f0f90c56ea7f">评论</span></button>
   <div class="cthread" hidden>
     <div class="clist"></div>
     <div class="cform">
@@ -248,8 +263,8 @@ function pmImgError(img){
       <p class="full">剪指甲啦，感觉脚指甲长的很慢</p>
       <p>Sep 24, 2026 at 8:53</p>
     </div>
-    <div class="cbox" data-moment="51152eb8cab8b518">
-  <button class="cbtn" type="button">💬 <span class="ccount" data-count="51152eb8cab8b518">评论</span></button>
+    <div class="cbox" data-moment="670883dc91c4b16d">
+  <button class="cbtn" type="button">💬 <span class="ccount" data-count="670883dc91c4b16d">评论</span></button>
   <div class="cthread" hidden>
     <div class="clist"></div>
     <div class="cform">
@@ -280,8 +295,8 @@ function pmImgError(img){
       <p class="full">第一次剃，也不管美不美观啦</p>
       <p>Sep 20, 2026 at 10:10</p>
     </div>
-    <div class="cbox" data-moment="b4cd7b027e1391ab">
-  <button class="cbtn" type="button">💬 <span class="ccount" data-count="b4cd7b027e1391ab">评论</span></button>
+    <div class="cbox" data-moment="191d880542575912">
+  <button class="cbtn" type="button">💬 <span class="ccount" data-count="191d880542575912">评论</span></button>
   <div class="cthread" hidden>
     <div class="clist"></div>
     <div class="cform">
@@ -300,7 +315,7 @@ function pmImgError(img){
   </div>
   <div class="card">
     <div class="row">
-      <img class="thumb" src="/pet-moments/s/img/f22b4d3297a61a5ec2d08e71.jpg" data-src="/pet-moments/s/img/f22b4d3297a61a5ec2d08e71.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/f22b4d3297a61a5ec2d08e71.jpg" data-emoji="🐾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
+      <img class="thumb" src="/pet-moments/s/img/f65401760e0a84257fce41f9.jpg" data-src="/pet-moments/s/img/f65401760e0a84257fce41f9.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/f65401760e0a84257fce41f9.jpg" data-emoji="🐾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
       <div class="body">
         <span class="chip" style="color:#73B8BC;background:#73B8BC22">观察</span>
         <p class="note">最近它很喜欢望向窗外，感觉要越狱了</p>
@@ -308,12 +323,12 @@ function pmImgError(img){
     </div>
     <p class="toggle"><span class="more">点击展开 ▾</span><span class="less">收起 ▴</span></p>
     <div class="detail">
-      <img class="dimg" src="/pet-moments/s/img/f22b4d3297a61a5ec2d08e71.jpg" data-src="/pet-moments/s/img/f22b4d3297a61a5ec2d08e71.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/f22b4d3297a61a5ec2d08e71.jpg" data-emoji="🐾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
+      <img class="dimg" data-large="/pet-moments/s/img/f22b4d3297a61a5ec2d08e71.jpg" data-src="/pet-moments/s/img/f22b4d3297a61a5ec2d08e71.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/f22b4d3297a61a5ec2d08e71.jpg" data-emoji="🐾" alt="" decoding="async" onerror="pmImgError(this)">
       <p class="full">最近它很喜欢望向窗外，感觉要越狱了</p>
       <p>Sep 19, 2026 at 11:15</p>
     </div>
-    <div class="cbox" data-moment="1136bb973ba76516">
-  <button class="cbtn" type="button">💬 <span class="ccount" data-count="1136bb973ba76516">评论</span></button>
+    <div class="cbox" data-moment="e928868125fe672c">
+  <button class="cbtn" type="button">💬 <span class="ccount" data-count="e928868125fe672c">评论</span></button>
   <div class="cthread" hidden>
     <div class="clist"></div>
     <div class="cform">
@@ -332,7 +347,7 @@ function pmImgError(img){
   </div>
   <div class="card">
     <div class="row">
-      <img class="thumb" src="/pet-moments/s/img/a71190b1699dd63a0d6bdc7a.jpg" data-src="/pet-moments/s/img/a71190b1699dd63a0d6bdc7a.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/a71190b1699dd63a0d6bdc7a.jpg" data-emoji="💅" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
+      <img class="thumb" src="/pet-moments/s/img/0d06342bb1f41385c8b35207.jpg" data-src="/pet-moments/s/img/0d06342bb1f41385c8b35207.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/0d06342bb1f41385c8b35207.jpg" data-emoji="💅" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
       <div class="body">
         <span class="chip" style="color:#E8A598;background:#E8A59822">剪指甲</span>
         <p class="note">安静剪完指甲，奖励一个小零食，但是还想吃</p>
@@ -340,12 +355,12 @@ function pmImgError(img){
     </div>
     <p class="toggle"><span class="more">点击展开 ▾</span><span class="less">收起 ▴</span></p>
     <div class="detail">
-      <img class="dimg" src="/pet-moments/s/img/a71190b1699dd63a0d6bdc7a.jpg" data-src="/pet-moments/s/img/a71190b1699dd63a0d6bdc7a.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/a71190b1699dd63a0d6bdc7a.jpg" data-emoji="💅" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
+      <img class="dimg" data-large="/pet-moments/s/img/a71190b1699dd63a0d6bdc7a.jpg" data-src="/pet-moments/s/img/a71190b1699dd63a0d6bdc7a.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/a71190b1699dd63a0d6bdc7a.jpg" data-emoji="💅" alt="" decoding="async" onerror="pmImgError(this)">
       <p class="full">安静剪完指甲，奖励一个小零食，但是还想吃</p>
       <p>Sep 13, 2026 at 10:01</p>
     </div>
-    <div class="cbox" data-moment="c6219539aee71411">
-  <button class="cbtn" type="button">💬 <span class="ccount" data-count="c6219539aee71411">评论</span></button>
+    <div class="cbox" data-moment="f08a2ad8cf4a10f3">
+  <button class="cbtn" type="button">💬 <span class="ccount" data-count="f08a2ad8cf4a10f3">评论</span></button>
   <div class="cthread" hidden>
     <div class="clist"></div>
     <div class="cform">
@@ -364,7 +379,7 @@ function pmImgError(img){
   </div>
   <div class="card">
     <div class="row">
-      <img class="thumb" src="/pet-moments/s/img/542467c2d0211a149be248ad.jpg" data-src="/pet-moments/s/img/542467c2d0211a149be248ad.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/542467c2d0211a149be248ad.jpg" data-emoji="🎾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
+      <img class="thumb" src="/pet-moments/s/img/b1926395cf28c1885f4a9a7e.jpg" data-src="/pet-moments/s/img/b1926395cf28c1885f4a9a7e.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/b1926395cf28c1885f4a9a7e.jpg" data-emoji="🎾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
       <div class="body">
         <span class="chip" style="color:#7FB6D8;background:#7FB6D822">玩耍</span>
         <p class="note">自己晒太阳，自己舔毛</p>
@@ -372,12 +387,12 @@ function pmImgError(img){
     </div>
     <p class="toggle"><span class="more">点击展开 ▾</span><span class="less">收起 ▴</span></p>
     <div class="detail">
-      <img class="dimg" src="/pet-moments/s/img/542467c2d0211a149be248ad.jpg" data-src="/pet-moments/s/img/542467c2d0211a149be248ad.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/542467c2d0211a149be248ad.jpg" data-emoji="🎾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
+      <img class="dimg" data-large="/pet-moments/s/img/542467c2d0211a149be248ad.jpg" data-src="/pet-moments/s/img/542467c2d0211a149be248ad.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/542467c2d0211a149be248ad.jpg" data-emoji="🎾" alt="" decoding="async" onerror="pmImgError(this)">
       <p class="full">自己晒太阳，自己舔毛</p>
       <p>Sep 10, 2026 at 10:23</p>
     </div>
-    <div class="cbox" data-moment="6b1a90be1e67c4c0">
-  <button class="cbtn" type="button">💬 <span class="ccount" data-count="6b1a90be1e67c4c0">评论</span></button>
+    <div class="cbox" data-moment="4235842ad632e9db">
+  <button class="cbtn" type="button">💬 <span class="ccount" data-count="4235842ad632e9db">评论</span></button>
   <div class="cthread" hidden>
     <div class="clist"></div>
     <div class="cform">
@@ -396,7 +411,7 @@ function pmImgError(img){
   </div>
   <div class="card">
     <div class="row">
-      <img class="thumb" src="/pet-moments/s/img/425b9c1ed02963bac50a4bb6.jpg" data-src="/pet-moments/s/img/425b9c1ed02963bac50a4bb6.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/425b9c1ed02963bac50a4bb6.jpg" data-emoji="💊" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
+      <img class="thumb" src="/pet-moments/s/img/2ea8112f2b7a6001c88a65b2.jpg" data-src="/pet-moments/s/img/2ea8112f2b7a6001c88a65b2.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/2ea8112f2b7a6001c88a65b2.jpg" data-emoji="💊" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
       <div class="body">
         <span class="chip" style="color:#9BB48C;background:#9BB48C22">驱虫</span>
         <p class="note">今天外驱</p>
@@ -404,12 +419,12 @@ function pmImgError(img){
     </div>
     <p class="toggle"><span class="more">点击展开 ▾</span><span class="less">收起 ▴</span></p>
     <div class="detail">
-      <img class="dimg" src="/pet-moments/s/img/425b9c1ed02963bac50a4bb6.jpg" data-src="/pet-moments/s/img/425b9c1ed02963bac50a4bb6.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/425b9c1ed02963bac50a4bb6.jpg" data-emoji="💊" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
+      <img class="dimg" data-large="/pet-moments/s/img/425b9c1ed02963bac50a4bb6.jpg" data-src="/pet-moments/s/img/425b9c1ed02963bac50a4bb6.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/425b9c1ed02963bac50a4bb6.jpg" data-emoji="💊" alt="" decoding="async" onerror="pmImgError(this)">
       <p class="full">今天外驱</p>
       <p>Sep 9, 2026 at 22:48</p>
     </div>
-    <div class="cbox" data-moment="c441bca4dc9202f2">
-  <button class="cbtn" type="button">💬 <span class="ccount" data-count="c441bca4dc9202f2">评论</span></button>
+    <div class="cbox" data-moment="6e9eb8cd76d66df9">
+  <button class="cbtn" type="button">💬 <span class="ccount" data-count="6e9eb8cd76d66df9">评论</span></button>
   <div class="cthread" hidden>
     <div class="clist"></div>
     <div class="cform">
@@ -428,7 +443,7 @@ function pmImgError(img){
   </div>
   <div class="card">
     <div class="row">
-      <img class="thumb" src="/pet-moments/s/img/2fef573547484a80c088552b.jpg" data-src="/pet-moments/s/img/2fef573547484a80c088552b.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/2fef573547484a80c088552b.jpg" data-emoji="🐾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
+      <img class="thumb" src="/pet-moments/s/img/efd3ec5622ca8d2936922532.jpg" data-src="/pet-moments/s/img/efd3ec5622ca8d2936922532.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/efd3ec5622ca8d2936922532.jpg" data-emoji="🐾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
       <div class="body">
         <span class="chip" style="color:#73B8BC;background:#73B8BC22">观察</span>
         <p class="note">无备注</p>
@@ -436,12 +451,12 @@ function pmImgError(img){
     </div>
     <p class="toggle"><span class="more">点击展开 ▾</span><span class="less">收起 ▴</span></p>
     <div class="detail">
-      <img class="dimg" src="/pet-moments/s/img/2fef573547484a80c088552b.jpg" data-src="/pet-moments/s/img/2fef573547484a80c088552b.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/2fef573547484a80c088552b.jpg" data-emoji="🐾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
+      <img class="dimg" data-large="/pet-moments/s/img/2fef573547484a80c088552b.jpg" data-src="/pet-moments/s/img/2fef573547484a80c088552b.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/2fef573547484a80c088552b.jpg" data-emoji="🐾" alt="" decoding="async" onerror="pmImgError(this)">
       <p class="full">无备注</p>
       <p>Sep 9, 2026 at 7:47</p>
     </div>
-    <div class="cbox" data-moment="76e011e6fc77a276">
-  <button class="cbtn" type="button">💬 <span class="ccount" data-count="76e011e6fc77a276">评论</span></button>
+    <div class="cbox" data-moment="f3c5ee98226d9ce4">
+  <button class="cbtn" type="button">💬 <span class="ccount" data-count="f3c5ee98226d9ce4">评论</span></button>
   <div class="cthread" hidden>
     <div class="clist"></div>
     <div class="cform">
@@ -460,7 +475,7 @@ function pmImgError(img){
   </div>
   <div class="card">
     <div class="row">
-      <img class="thumb" src="/pet-moments/s/img/211dcf16e23bdb30915e8ec4.jpg" data-src="/pet-moments/s/img/211dcf16e23bdb30915e8ec4.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/211dcf16e23bdb30915e8ec4.jpg" data-emoji="🎾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
+      <img class="thumb" src="/pet-moments/s/img/e13fa474a9187818534d80e1.jpg" data-src="/pet-moments/s/img/e13fa474a9187818534d80e1.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/e13fa474a9187818534d80e1.jpg" data-emoji="🎾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
       <div class="body">
         <span class="chip" style="color:#7FB6D8;background:#7FB6D822">玩耍</span>
         <p class="note">由于它上窗台发现了之前它玩烂的羽毛逗猫棒，现在开始自娱自乐，已经玩了20分钟了</p>
@@ -468,12 +483,12 @@ function pmImgError(img){
     </div>
     <p class="toggle"><span class="more">点击展开 ▾</span><span class="less">收起 ▴</span></p>
     <div class="detail">
-      <img class="dimg" src="/pet-moments/s/img/211dcf16e23bdb30915e8ec4.jpg" data-src="/pet-moments/s/img/211dcf16e23bdb30915e8ec4.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/211dcf16e23bdb30915e8ec4.jpg" data-emoji="🎾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
+      <img class="dimg" data-large="/pet-moments/s/img/211dcf16e23bdb30915e8ec4.jpg" data-src="/pet-moments/s/img/211dcf16e23bdb30915e8ec4.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/211dcf16e23bdb30915e8ec4.jpg" data-emoji="🎾" alt="" decoding="async" onerror="pmImgError(this)">
       <p class="full">由于它上窗台发现了之前它玩烂的羽毛逗猫棒，现在开始自娱自乐，已经玩了20分钟了</p>
       <p>Sep 8, 2026 at 22:06</p>
     </div>
-    <div class="cbox" data-moment="2dfe2f10d084b8ba">
-  <button class="cbtn" type="button">💬 <span class="ccount" data-count="2dfe2f10d084b8ba">评论</span></button>
+    <div class="cbox" data-moment="87819b8c6d195c93">
+  <button class="cbtn" type="button">💬 <span class="ccount" data-count="87819b8c6d195c93">评论</span></button>
   <div class="cthread" hidden>
     <div class="clist"></div>
     <div class="cform">
@@ -492,7 +507,7 @@ function pmImgError(img){
   </div>
   <div class="card">
     <div class="row">
-      <img class="thumb" src="/pet-moments/s/img/c3a1f8ed469c10f4f893cff5.jpg" data-src="/pet-moments/s/img/c3a1f8ed469c10f4f893cff5.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/c3a1f8ed469c10f4f893cff5.jpg" data-emoji="🎾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
+      <img class="thumb" src="/pet-moments/s/img/dade73acfb8c23501be349b8.jpg" data-src="/pet-moments/s/img/dade73acfb8c23501be349b8.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/dade73acfb8c23501be349b8.jpg" data-emoji="🎾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
       <div class="body">
         <span class="chip" style="color:#7FB6D8;background:#7FB6D822">玩耍</span>
         <p class="note">引诱它晒太阳</p>
@@ -500,12 +515,12 @@ function pmImgError(img){
     </div>
     <p class="toggle"><span class="more">点击展开 ▾</span><span class="less">收起 ▴</span></p>
     <div class="detail">
-      <img class="dimg" src="/pet-moments/s/img/c3a1f8ed469c10f4f893cff5.jpg" data-src="/pet-moments/s/img/c3a1f8ed469c10f4f893cff5.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/c3a1f8ed469c10f4f893cff5.jpg" data-emoji="🎾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
+      <img class="dimg" data-large="/pet-moments/s/img/c3a1f8ed469c10f4f893cff5.jpg" data-src="/pet-moments/s/img/c3a1f8ed469c10f4f893cff5.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/c3a1f8ed469c10f4f893cff5.jpg" data-emoji="🎾" alt="" decoding="async" onerror="pmImgError(this)">
       <p class="full">引诱它晒太阳</p>
       <p>Sep 8, 2026 at 11:23</p>
     </div>
-    <div class="cbox" data-moment="6ece8d8ac930fcdd">
-  <button class="cbtn" type="button">💬 <span class="ccount" data-count="6ece8d8ac930fcdd">评论</span></button>
+    <div class="cbox" data-moment="6e621e56bc383893">
+  <button class="cbtn" type="button">💬 <span class="ccount" data-count="6e621e56bc383893">评论</span></button>
   <div class="cthread" hidden>
     <div class="clist"></div>
     <div class="cform">
@@ -524,7 +539,7 @@ function pmImgError(img){
   </div>
   <div class="card">
     <div class="row">
-      <img class="thumb" src="/pet-moments/s/img/a3f9a2a1ddfb36d3137f504a.jpg" data-src="/pet-moments/s/img/a3f9a2a1ddfb36d3137f504a.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/a3f9a2a1ddfb36d3137f504a.jpg" data-emoji="🐾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
+      <img class="thumb" src="/pet-moments/s/img/ab61e27f596290c812ef342a.jpg" data-src="/pet-moments/s/img/ab61e27f596290c812ef342a.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/ab61e27f596290c812ef342a.jpg" data-emoji="🐾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
       <div class="body">
         <span class="chip" style="color:#73B8BC;background:#73B8BC22">观察</span>
         <p class="note">自己晒太阳，十分不错，之前要想办法给他晒太阳</p>
@@ -532,12 +547,12 @@ function pmImgError(img){
     </div>
     <p class="toggle"><span class="more">点击展开 ▾</span><span class="less">收起 ▴</span></p>
     <div class="detail">
-      <img class="dimg" src="/pet-moments/s/img/a3f9a2a1ddfb36d3137f504a.jpg" data-src="/pet-moments/s/img/a3f9a2a1ddfb36d3137f504a.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/a3f9a2a1ddfb36d3137f504a.jpg" data-emoji="🐾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
+      <img class="dimg" data-large="/pet-moments/s/img/a3f9a2a1ddfb36d3137f504a.jpg" data-src="/pet-moments/s/img/a3f9a2a1ddfb36d3137f504a.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/a3f9a2a1ddfb36d3137f504a.jpg" data-emoji="🐾" alt="" decoding="async" onerror="pmImgError(this)">
       <p class="full">自己晒太阳，十分不错，之前要想办法给他晒太阳</p>
       <p>Sep 8, 2026 at 9:17</p>
     </div>
-    <div class="cbox" data-moment="b991c5bbce9c6850">
-  <button class="cbtn" type="button">💬 <span class="ccount" data-count="b991c5bbce9c6850">评论</span></button>
+    <div class="cbox" data-moment="81b83668480441c5">
+  <button class="cbtn" type="button">💬 <span class="ccount" data-count="81b83668480441c5">评论</span></button>
   <div class="cthread" hidden>
     <div class="clist"></div>
     <div class="cform">
@@ -556,7 +571,7 @@ function pmImgError(img){
   </div>
   <div class="card">
     <div class="row">
-      <img class="thumb" src="/pet-moments/s/img/0545d0f107e6e2559abd9071.jpg" data-src="/pet-moments/s/img/0545d0f107e6e2559abd9071.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/0545d0f107e6e2559abd9071.jpg" data-emoji="🎾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
+      <img class="thumb" src="/pet-moments/s/img/c529179bff99cdbee41ba773.jpg" data-src="/pet-moments/s/img/c529179bff99cdbee41ba773.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/c529179bff99cdbee41ba773.jpg" data-emoji="🎾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
       <div class="body">
         <span class="chip" style="color:#7FB6D8;background:#7FB6D822">玩耍</span>
         <p class="note">新玩具，玩了5分钟已经玩烂了</p>
@@ -564,12 +579,12 @@ function pmImgError(img){
     </div>
     <p class="toggle"><span class="more">点击展开 ▾</span><span class="less">收起 ▴</span></p>
     <div class="detail">
-      <img class="dimg" src="/pet-moments/s/img/0545d0f107e6e2559abd9071.jpg" data-src="/pet-moments/s/img/0545d0f107e6e2559abd9071.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/0545d0f107e6e2559abd9071.jpg" data-emoji="🎾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
+      <img class="dimg" data-large="/pet-moments/s/img/0545d0f107e6e2559abd9071.jpg" data-src="/pet-moments/s/img/0545d0f107e6e2559abd9071.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/0545d0f107e6e2559abd9071.jpg" data-emoji="🎾" alt="" decoding="async" onerror="pmImgError(this)">
       <p class="full">新玩具，玩了5分钟已经玩烂了</p>
       <p>Sep 7, 2026 at 19:12</p>
     </div>
-    <div class="cbox" data-moment="eecb6df4e4c4159e">
-  <button class="cbtn" type="button">💬 <span class="ccount" data-count="eecb6df4e4c4159e">评论</span></button>
+    <div class="cbox" data-moment="0b59a95086e27b3e">
+  <button class="cbtn" type="button">💬 <span class="ccount" data-count="0b59a95086e27b3e">评论</span></button>
   <div class="cthread" hidden>
     <div class="clist"></div>
     <div class="cform">
@@ -588,7 +603,7 @@ function pmImgError(img){
   </div>
   <div class="card">
     <div class="row">
-      <img class="thumb" src="/pet-moments/s/img/36ac60669c10fe6fac37bbe3.jpg" data-src="/pet-moments/s/img/36ac60669c10fe6fac37bbe3.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/36ac60669c10fe6fac37bbe3.jpg" data-emoji="🐾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
+      <img class="thumb" src="/pet-moments/s/img/83c1e58b9bf52b74ef267169.jpg" data-src="/pet-moments/s/img/83c1e58b9bf52b74ef267169.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/83c1e58b9bf52b74ef267169.jpg" data-emoji="🐾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
       <div class="body">
         <span class="chip" style="color:#73B8BC;background:#73B8BC22">观察</span>
         <p class="note">已经大到可以跳上厨房台面了，以前放的东西都得收起来了</p>
@@ -596,12 +611,12 @@ function pmImgError(img){
     </div>
     <p class="toggle"><span class="more">点击展开 ▾</span><span class="less">收起 ▴</span></p>
     <div class="detail">
-      <img class="dimg" src="/pet-moments/s/img/36ac60669c10fe6fac37bbe3.jpg" data-src="/pet-moments/s/img/36ac60669c10fe6fac37bbe3.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/36ac60669c10fe6fac37bbe3.jpg" data-emoji="🐾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
+      <img class="dimg" data-large="/pet-moments/s/img/36ac60669c10fe6fac37bbe3.jpg" data-src="/pet-moments/s/img/36ac60669c10fe6fac37bbe3.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/36ac60669c10fe6fac37bbe3.jpg" data-emoji="🐾" alt="" decoding="async" onerror="pmImgError(this)">
       <p class="full">已经大到可以跳上厨房台面了，以前放的东西都得收起来了</p>
       <p>Sep 7, 2026 at 17:23</p>
     </div>
-    <div class="cbox" data-moment="bcdf37b83a29627e">
-  <button class="cbtn" type="button">💬 <span class="ccount" data-count="bcdf37b83a29627e">评论</span></button>
+    <div class="cbox" data-moment="8f1720c89a665729">
+  <button class="cbtn" type="button">💬 <span class="ccount" data-count="8f1720c89a665729">评论</span></button>
   <div class="cthread" hidden>
     <div class="clist"></div>
     <div class="cform">
@@ -632,8 +647,8 @@ function pmImgError(img){
       <p class="full">第一次内驱</p>
       <p>Sep 6, 2026 at 23:11</p>
     </div>
-    <div class="cbox" data-moment="8c5e7638dab8fa59">
-  <button class="cbtn" type="button">💬 <span class="ccount" data-count="8c5e7638dab8fa59">评论</span></button>
+    <div class="cbox" data-moment="255bab409631b4a7">
+  <button class="cbtn" type="button">💬 <span class="ccount" data-count="255bab409631b4a7">评论</span></button>
   <div class="cthread" hidden>
     <div class="clist"></div>
     <div class="cform">
@@ -652,7 +667,7 @@ function pmImgError(img){
   </div>
   <div class="card">
     <div class="row">
-      <img class="thumb" src="/pet-moments/s/img/7ecc8bdb2fd1bd801eee9486.jpg" data-src="/pet-moments/s/img/7ecc8bdb2fd1bd801eee9486.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/7ecc8bdb2fd1bd801eee9486.jpg" data-emoji="🎾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
+      <img class="thumb" src="/pet-moments/s/img/8103216cbecaf4f207a1020b.jpg" data-src="/pet-moments/s/img/8103216cbecaf4f207a1020b.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/8103216cbecaf4f207a1020b.jpg" data-emoji="🎾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
       <div class="body">
         <span class="chip" style="color:#7FB6D8;background:#7FB6D822">玩耍</span>
         <p class="note">在思考要不要给它剃脚毛，他总打滑怕有关节问题</p>
@@ -660,12 +675,12 @@ function pmImgError(img){
     </div>
     <p class="toggle"><span class="more">点击展开 ▾</span><span class="less">收起 ▴</span></p>
     <div class="detail">
-      <img class="dimg" src="/pet-moments/s/img/7ecc8bdb2fd1bd801eee9486.jpg" data-src="/pet-moments/s/img/7ecc8bdb2fd1bd801eee9486.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/7ecc8bdb2fd1bd801eee9486.jpg" data-emoji="🎾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
+      <img class="dimg" data-large="/pet-moments/s/img/7ecc8bdb2fd1bd801eee9486.jpg" data-src="/pet-moments/s/img/7ecc8bdb2fd1bd801eee9486.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/7ecc8bdb2fd1bd801eee9486.jpg" data-emoji="🎾" alt="" decoding="async" onerror="pmImgError(this)">
       <p class="full">在思考要不要给它剃脚毛，他总打滑怕有关节问题</p>
       <p>Sep 1, 2026 at 18:56</p>
     </div>
-    <div class="cbox" data-moment="90656bc019375dae">
-  <button class="cbtn" type="button">💬 <span class="ccount" data-count="90656bc019375dae">评论</span></button>
+    <div class="cbox" data-moment="d0ab70409b8380e6">
+  <button class="cbtn" type="button">💬 <span class="ccount" data-count="d0ab70409b8380e6">评论</span></button>
   <div class="cthread" hidden>
     <div class="clist"></div>
     <div class="cform">
@@ -684,7 +699,7 @@ function pmImgError(img){
   </div>
   <div class="card">
     <div class="row">
-      <img class="thumb" src="/pet-moments/s/img/5bd41d5a8faa13a45a206af9.jpg" data-src="/pet-moments/s/img/5bd41d5a8faa13a45a206af9.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/5bd41d5a8faa13a45a206af9.jpg" data-emoji="🎾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
+      <img class="thumb" src="/pet-moments/s/img/46f4a432aff7649e82ab11ce.jpg" data-src="/pet-moments/s/img/46f4a432aff7649e82ab11ce.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/46f4a432aff7649e82ab11ce.jpg" data-emoji="🎾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
       <div class="body">
         <span class="chip" style="color:#7FB6D8;background:#7FB6D822">玩耍</span>
         <p class="note">最近发现它很喜欢在猫爬架附近躺着玩逗猫棒</p>
@@ -692,12 +707,12 @@ function pmImgError(img){
     </div>
     <p class="toggle"><span class="more">点击展开 ▾</span><span class="less">收起 ▴</span></p>
     <div class="detail">
-      <img class="dimg" src="/pet-moments/s/img/5bd41d5a8faa13a45a206af9.jpg" data-src="/pet-moments/s/img/5bd41d5a8faa13a45a206af9.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/5bd41d5a8faa13a45a206af9.jpg" data-emoji="🎾" alt="" loading="lazy" decoding="async" onerror="pmImgError(this)">
+      <img class="dimg" data-large="/pet-moments/s/img/5bd41d5a8faa13a45a206af9.jpg" data-src="/pet-moments/s/img/5bd41d5a8faa13a45a206af9.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/5bd41d5a8faa13a45a206af9.jpg" data-emoji="🎾" alt="" decoding="async" onerror="pmImgError(this)">
       <p class="full">最近发现它很喜欢在猫爬架附近躺着玩逗猫棒</p>
       <p>Sep 1, 2026 at 12:45</p>
     </div>
-    <div class="cbox" data-moment="d17aaf3a4ed968ef">
-  <button class="cbtn" type="button">💬 <span class="ccount" data-count="d17aaf3a4ed968ef">评论</span></button>
+    <div class="cbox" data-moment="420c131e771f476c">
+  <button class="cbtn" type="button">💬 <span class="ccount" data-count="420c131e771f476c">评论</span></button>
   <div class="cthread" hidden>
     <div class="clist"></div>
     <div class="cform">
@@ -714,7 +729,15 @@ function pmImgError(img){
 </div>
 <script>
 document.querySelectorAll('.card').forEach(function(card){
-  card.addEventListener('click', function(){ card.classList.toggle('open'); });
+  card.addEventListener('click', function(){
+    card.classList.toggle('open');
+    // Load the full-size photo only now, on first expand.
+    card.querySelectorAll('img[data-large]').forEach(function(img){
+      var url = img.getAttribute('data-large');
+      img.removeAttribute('data-large');
+      if(url){ img.src = url; }
+    });
+  });
 });
 
 // Month switcher: built from s/months.json so newly published months show
