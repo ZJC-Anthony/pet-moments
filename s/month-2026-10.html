@@ -44,6 +44,8 @@ h2.pet{font-size:24px;color:var(--primary);margin:34px 0 14px}
   transition:transform .15s ease}
 .card:active{transform:scale(.995)}
 .row{display:flex;gap:12px;align-items:flex-start}
+.weight{display:inline-block;margin-left:6px;font-size:17px;font-weight:600;
+  color:var(--primary);vertical-align:1px}
 .thumb{width:64px;height:64px;border-radius:12px;object-fit:cover;flex:0 0 auto;background:var(--surface)}
 .thumb.ph{display:flex;align-items:center;justify-content:center;font-size:24px}
 .dimg.ph{display:flex;align-items:center;justify-content:center;height:120px;font-size:34px;
@@ -147,8 +149,41 @@ function pmImgError(img){
     <p>5个月 · 缅因 · 3.9 kg</p>
   </div>
 </div>
-<div class="stats"><div class="stat"><div class="n">3</div><div class="l">观察</div></div><div class="stat"><div class="n">1</div><div class="l">玩耍</div></div></div>
+<div class="stats"><div class="stat"><div class="n">3</div><div class="l">观察</div></div><div class="stat"><div class="n">1</div><div class="l">玩耍</div></div><div class="stat"><div class="n">1</div><div class="l">体重</div></div></div>
 <div class="day" data-day="2026-10-05">Oct 5 · Mon</div><div class="entry">
+  <div class="rail">
+    <div class="time">14:40</div>
+    <div class="track"><span class="dot" style="background:#5E9E8F"></span></div>
+  </div>
+  <div class="card">
+    <div class="row">
+      <div class="thumb ph" style="background:#5E9E8F22">🐾</div>
+      <div class="body">
+        <span class="chip" style="color:#5E9E8F;background:#5E9E8F22">体重</span>
+        <span class="weight">3.9 kg</span>
+        <p class="note">无备注</p>
+      </div>
+    </div>
+    <p class="toggle"><span class="more">点击展开 ▾</span><span class="less">收起 ▴</span></p>
+    <div class="detail">
+      
+      <p class="full">无备注</p>
+      <p>Oct 5, 2026 at 14:40</p>
+    </div>
+    <div class="cbox" data-moment="e870db1c4f7e4e448352175d">
+  <button class="cbtn" type="button">💬 <span class="ccount" data-count="e870db1c4f7e4e448352175d">评论</span></button>
+  <div class="cthread" hidden>
+    <div class="clist"></div>
+    <div class="cform">
+      <div class="cwho" hidden>以 <b class="cwhoname"></b> 评论 · <a class="cchange" href="javascript:void(0)">改昵称</a></div>
+      <input class="cnick" type="text" maxlength="20" placeholder="你的昵称（填一次就记住了）">
+      <textarea class="cbody" maxlength="300" rows="2" placeholder="说点什么…"></textarea>
+      <button class="csend" type="button">发送</button>
+    </div>
+  </div>
+</div>
+  </div>
+</div><div class="entry">
   <div class="rail">
     <div class="time">14:25</div>
     <div class="track"><span class="dot" style="background:#73B8BC"></span></div>
@@ -158,6 +193,7 @@ function pmImgError(img){
       <img class="thumb" src="/pet-moments/s/img/4c92ea1e304c69c57f65664d.jpg" data-src="/pet-moments/s/img/4c92ea1e304c69c57f65664d.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/4c92ea1e304c69c57f65664d.jpg" data-emoji="🐾" alt="" decoding="async" onerror="pmImgError(this)">
       <div class="body">
         <span class="chip" style="color:#73B8BC;background:#73B8BC22">观察</span>
+        
         <p class="note">洗脸中</p>
       </div>
     </div>
@@ -190,6 +226,7 @@ function pmImgError(img){
       <img class="thumb" src="/pet-moments/s/img/e30c2cd665d41376cc3f89cb.jpg" data-src="/pet-moments/s/img/e30c2cd665d41376cc3f89cb.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/e30c2cd665d41376cc3f89cb.jpg" data-emoji="🐾" alt="" decoding="async" onerror="pmImgError(this)">
       <div class="body">
         <span class="chip" style="color:#73B8BC;background:#73B8BC22">观察</span>
+        
         <p class="note">摊成一个猫饼</p>
       </div>
     </div>
@@ -222,6 +259,7 @@ function pmImgError(img){
       <img class="thumb" src="/pet-moments/s/img/c3ee80a9cd96df50fe6fe2be.jpg" data-src="/pet-moments/s/img/c3ee80a9cd96df50fe6fe2be.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/c3ee80a9cd96df50fe6fe2be.jpg" data-emoji="🐾" alt="" decoding="async" onerror="pmImgError(this)">
       <div class="body">
         <span class="chip" style="color:#73B8BC;background:#73B8BC22">观察</span>
+        
         <p class="note">晒太阳中</p>
       </div>
     </div>
@@ -254,6 +292,7 @@ function pmImgError(img){
       <img class="thumb" src="/pet-moments/s/img/22d3af6e5f02c943bdb5ebc4.jpg" data-src="/pet-moments/s/img/22d3af6e5f02c943bdb5ebc4.jpg" data-cdn="https://cdn.jsdelivr.net/gh/ZJC-Anthony/pet-moments@main/s/img/22d3af6e5f02c943bdb5ebc4.jpg" data-emoji="🎾" alt="" decoding="async" onerror="pmImgError(this)">
       <div class="body">
         <span class="chip" style="color:#7FB6D8;background:#7FB6D822">玩耍</span>
+        
         <p class="note">从韩国回来以后努力陪伴，哈哈哈</p>
       </div>
     </div>
